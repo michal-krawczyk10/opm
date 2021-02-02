@@ -1,12 +1,12 @@
 {
-  "name": "WTF: PWA",
-  "short_name": "WTF: PWA",
-  "theme_color": "#2D2241",
-  "background_color": "#2D2241",
+  "name": "OPM",
+  "short_name": "OPM",
+  "theme_color": "#0D2C54",
+  "background_color": "#0D2C54",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/wtf-webpack-starter/",
-  "start_url": "/wtf-webpack-starter/",
+  "scope": "/opm/",
+  "start_url": "/opm/",
   "icons": [
     {
       "src": "pwa/manifest-icon-192.png",
