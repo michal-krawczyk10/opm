@@ -1,6 +1,8 @@
 @import "~normalize.css";
 
 @import "modules/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Open+Sans:wght@600&family=Paprika&display=swap");
+
 
 *,
 *:before,
@@ -22,3 +24,5 @@ body {
   justify-content: center;
   min-height: 100vh;
 }
+
+main {max-width: 320px;}
