@@ -25,35 +25,50 @@ body {
 }
 
 main {
-  position: relative;
+	position: relative;
 	height: 100vh;
-	min-width: 320px;
-	max-width: 768px;
-	border: 1px solid $strike;
+	width: 100%;
 }
 
 .header {
-	position: fixed;
-	top: 4rem;
-	left: 4rem;
-  width: calc(100% - 8rem);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+	margin: 4rem 4rem 1rem 4rem;
+	width: calc(100% - 8rem);
+	max-width: 600px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 	&__logo {
-    width: 4rem;
-    height: 4rem;
+		width: 4rem;
+		height: 4rem;
 		border: 1px solid $strike;
-    margin-bottom: 1rem;
+		margin-bottom: 1rem;
 	}
 	&__quote {
 		border: 1px solid $strike;
-    text-align: center;
-    padding: 1rem;
+		text-align: center;
+		padding: 1rem;
 	}
 }
 
 .frame {
+	height: calc(100% - 18rem);
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
   position: fixed;
-  top: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.button {
+  width: 240px;
+}
+
+.show {
+	visibility: visible;
+}
+.hide {
+	visibility: hidden;
 }

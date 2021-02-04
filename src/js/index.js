@@ -6,3 +6,4 @@ registerSW();
 
 /* place your code below */
 
+const frameFirst = document.querySelector('.frame__first');
