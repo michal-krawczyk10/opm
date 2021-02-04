@@ -8,9 +8,8 @@ registerSW();
 
 const frameFirst = document.querySelector(".frame__first");
 const frameWorkout = document.querySelector(".frame__workout");
-const framehistory = document.querySelector('.history--js');
-const frameSettings = document.querySelector('.settings--js');
-
+const framehistory = document.querySelector(".history--js");
+const frameSettings = document.querySelector(".settings--js");
 
 const start = document.querySelector(".start--js");
 const history = document.querySelector(".history--js");
@@ -19,11 +18,22 @@ const go = document.querySelector(".go--js");
 const modify = document.querySelector("modify--js");
 
 start.addEventListener("click", () => {
-	frameFirst.classList.add('hide');
-  frameWorkout.classList.remove('hide');
+	frameFirst.classList.add("hide");
+	frameWorkout.classList.remove("hide");
 });
-
-history.addEventListner("click", () => {
-  frameFirst.classList.add('hide');
-  frameHistory.classList.remove('hide');
+history.addEventListener("click", () => {
+	frameFirst.classList.add("hide");
+	frameHistory.classList.remove("hide");
+});
+settings.addEventListener("click", () => {
+	frameFirst.classList.add("hide");
+	frameSettings.classList.remove("hide");
+});
+go.addEventListener("click", () => {
+	frameFirst.classList.add("hide");
+	frameGo.classList.remove("hide");
+});
+modify.addEventListener("click", () => {
+	frameFirst.classList.add("hide");
+	frameModify.classList.add("hide");
 });
