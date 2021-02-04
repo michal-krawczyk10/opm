@@ -3,7 +3,6 @@
 @import "modules/variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Open+Sans:wght@600&family=Paprika&display=swap");
 
-
 *,
 *:before,
 *:after {
@@ -17,12 +16,44 @@ html {
 }
 
 body {
-  background: $main;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+	background: $main;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
 }
 
-main {max-width: 320px;}
+main {
+  position: relative;
+	height: 100vh;
+	min-width: 320px;
+	max-width: 768px;
+	border: 1px solid $strike;
+}
+
+.header {
+	position: fixed;
+	top: 4rem;
+	left: 4rem;
+  width: calc(100% - 8rem);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+	&__logo {
+    width: 4rem;
+    height: 4rem;
+		border: 1px solid $strike;
+    margin-bottom: 1rem;
+	}
+	&__quote {
+		border: 1px solid $strike;
+    text-align: center;
+    padding: 1rem;
+	}
+}
+
+.frame {
+  position: fixed;
+  top: 1rem;
+}
