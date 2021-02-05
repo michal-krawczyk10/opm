@@ -31,7 +31,7 @@ const modify = document.querySelector(".modify--js");
 const go = document.querySelectorAll(".go--js");
 //level 4
 const done = document.querySelector(".done--js");
-const home = document.querySelector(".home--js");
+const home = document.querySelectorAll(".home--js");
 
 // 1 level
 start.addEventListener("click", () => {
@@ -58,13 +58,13 @@ modify.addEventListener("click", () => {
 });
 
 //3 level
-go.forEach((input) => input.addEventListener("click", startGo));
+go.forEach((input) => input.addEventListener("click", runGo));
 
-function startGo() {
+function runGo() {
 	frameStandard.classList.add("hide");
 	frameModify.classList.add("hide");
 	frameAction.classList.remove("hide");
-};
+}
 
 //4 level
 done.addEventListener("click", () => {
@@ -72,7 +72,11 @@ done.addEventListener("click", () => {
 	frameDone.classList.remove("hide");
 });
 
-home.addEventListener("click", () => {
+home.forEach((input) => input.addEventListener("click", runHome));
+function runHome() {
 	frameDone.classList.add("hide");
+  frameWorkout.classList.add('hide');
+  frameSettings.classList.add('hide');
+  frameHistory.classList.add('hide');
 	frameFirst.classList.remove("hide");
-});
+}
