@@ -51,6 +51,14 @@ settings.addEventListener("click", () => {
 standard.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
 	frameStandard.classList.remove("hide");
+	// display current exercise set values taken from local storage
+	if (exerciseSetObject) {
+		Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
+			exerciseSetDisplay.forEach((input) => {
+				input.innerHTML += `<p>${val}: ${exerciseSetObject[val]}</p>`;
+			});
+		});
+	}
 });
 modify.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
@@ -75,8 +83,28 @@ done.addEventListener("click", () => {
 home.forEach((input) => input.addEventListener("click", runHome));
 function runHome() {
 	frameDone.classList.add("hide");
-  frameWorkout.classList.add('hide');
-  frameSettings.classList.add('hide');
-  frameHistory.classList.add('hide');
+	frameWorkout.classList.add("hide");
+	frameSettings.classList.add("hide");
+	frameHistory.classList.add("hide");
 	frameFirst.classList.remove("hide");
 }
+
+//set
+
+localStorage.setItem(
+	"exercises",
+	JSON.stringify({ squats: 10, situps: 10, pushups: 10 })
+);
+
+const localJSON = localStorage.getItem("exercises");
+
+const exerciseSetObject = JSON.parse(localJSON);
+
+//places to show object items
+const exerciseSetDisplay = document.querySelectorAll(".exercise_set--js");
+//
+
+
+// Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
+// 	console.log(`<span>${val}: ${exerciseSetObject[val]}</span>`);
+// });
