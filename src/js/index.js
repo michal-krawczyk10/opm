@@ -37,6 +37,7 @@ const home = document.querySelectorAll(".home--js");
 start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameWorkout.classList.remove("hide");
+	showExerciseSet();
 });
 history.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -51,7 +52,6 @@ settings.addEventListener("click", () => {
 standard.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
 	frameStandard.classList.remove("hide");
-	showExerciseSet();
 });
 modify.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
@@ -60,6 +60,8 @@ modify.addEventListener("click", () => {
 
 //3 level
 go.forEach((input) => input.addEventListener("click", runGo));
+
+go.forEach((input) => input.addEventListener("click", removeExerciseDisplay));
 
 function runGo() {
 	frameStandard.classList.add("hide");
@@ -96,13 +98,27 @@ const exerciseSetObject = JSON.parse(localJSON);
 //places to show object items
 const exerciseSetDisplay = document.querySelectorAll(".exercise_set--js");
 //
+
 // display current exercise set values taken from local storage
 function showExerciseSet() {
 	if (exerciseSetObject) {
 		Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
 			exerciseSetDisplay.forEach((input) => {
-				input.innerHTML += `<p>${val}: ${exerciseSetObject[val]}</p>`;
+				input.innerHTML += `<p class="exercise_set">${val}: ${exerciseSetObject[val]}</p>`;
 			});
 		});
 	}
 }
+
+// del above to prevent stacking dom elements
+function removeExerciseDisplay() {
+	const removeExercise = document.querySelectorAll(".exercise_set");
+	function delate() {
+		removeExercise.forEach((input) => {
+			input.remove();
+		});
+	}
+	delate();
+}
+
+//modify local storage
