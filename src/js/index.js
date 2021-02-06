@@ -51,14 +51,7 @@ settings.addEventListener("click", () => {
 standard.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
 	frameStandard.classList.remove("hide");
-	// display current exercise set values taken from local storage
-	if (exerciseSetObject) {
-		Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
-			exerciseSetDisplay.forEach((input) => {
-				input.innerHTML += `<p>${val}: ${exerciseSetObject[val]}</p>`;
-			});
-		});
-	}
+	showExerciseSet();
 });
 modify.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
@@ -103,8 +96,13 @@ const exerciseSetObject = JSON.parse(localJSON);
 //places to show object items
 const exerciseSetDisplay = document.querySelectorAll(".exercise_set--js");
 //
-
-
-// Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
-// 	console.log(`<span>${val}: ${exerciseSetObject[val]}</span>`);
-// });
+// display current exercise set values taken from local storage
+function showExerciseSet() {
+	if (exerciseSetObject) {
+		Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
+			exerciseSetDisplay.forEach((input) => {
+				input.innerHTML += `<p>${val}: ${exerciseSetObject[val]}</p>`;
+			});
+		});
+	}
+}
