@@ -134,8 +134,6 @@ backToModify.addEventListener("click", () => {
 	frameModify.classList.remove("hide");
 });
 
-localStorage.setItem("level", 1);
-
 //level buttons
 const lev1 = document.querySelector(".l1--js");
 const lev2 = document.querySelector(".l2--js");
@@ -210,6 +208,23 @@ lev10.addEventListener("click", () => {
 });
 
 const levelDisplay = document.querySelectorAll(".level_display--js");
+
+const entryLevel = localStorage.getItem("level");
+let resultLevel = "";
+
+if (entryLevel) {
+	resultLevel = entryLevel;
+}
+console.log(resultLevel);
+
+levelDisplay.forEach((input) => {
+	input.innerHTML = resultLevel;
+});
+
+localStorage.setItem(
+	"exercises",
+	JSON.stringify({ squats: 10, situps: 10, pushups: 10 })
+);
 
 // levelChangeKey.addEventListener("click", levelChange);
 
