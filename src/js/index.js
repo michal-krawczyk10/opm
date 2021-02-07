@@ -113,12 +113,104 @@ function showExerciseSet() {
 // del above to prevent stacking dom elements
 function removeExerciseDisplay() {
 	const removeExercise = document.querySelectorAll(".exercise_set");
-	function delate() {
-		removeExercise.forEach((input) => {
-			input.remove();
-		});
-	}
-	delate();
+	removeExercise.forEach((input) => {
+		input.remove();
+	});
 }
 
 //modify local storage
+
+//levels
+
+level.addEventListener("click", () => {
+	frameModify.classList.add("hide");
+	frameLevel.classList.remove("hide");
+});
+
+const backToModify = document.querySelector(".to_modify--js");
+
+backToModify.addEventListener("click", () => {
+	frameLevel.classList.add("hide");
+	frameModify.classList.remove("hide");
+});
+
+localStorage.setItem("level", 1);
+
+//level buttons
+const lev1 = document.querySelector(".l1--js");
+const lev2 = document.querySelector(".l2--js");
+const lev3 = document.querySelector(".l3--js");
+const lev4 = document.querySelector(".l4--js");
+const lev5 = document.querySelector(".l5--js");
+const lev6 = document.querySelector(".l6--js");
+const lev7 = document.querySelector(".l7--js");
+const lev8 = document.querySelector(".l8--js");
+const lev9 = document.querySelector(".l9--js");
+const lev10 = document.querySelector(".l10--js");
+
+lev1.addEventListener("click", () => {
+	localStorage.setItem("level", 1);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "1";
+	});
+});
+lev2.addEventListener("click", () => {
+	localStorage.setItem("level", 2);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "2";
+	});
+});
+lev3.addEventListener("click", () => {
+	localStorage.setItem("level", 3);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "3";
+	});
+});
+lev4.addEventListener("click", () => {
+	localStorage.setItem("level", 4);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "4";
+	});
+});
+lev5.addEventListener("click", () => {
+	localStorage.setItem("level", 5);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "5";
+	});
+});
+lev6.addEventListener("click", () => {
+	localStorage.setItem("level", 6);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "6";
+	});
+});
+lev7.addEventListener("click", () => {
+	localStorage.setItem("level", 7);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "7";
+	});
+});
+lev8.addEventListener("click", () => {
+	localStorage.setItem("level", 8);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "8";
+	});
+});
+lev9.addEventListener("click", () => {
+	localStorage.setItem("level", 9);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "9";
+	});
+});
+lev10.addEventListener("click", () => {
+	localStorage.setItem("level", 10);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = "10";
+	});
+});
+
+const levelDisplay = document.querySelectorAll(".level_display--js");
+
+// levelChangeKey.addEventListener("click", levelChange);
+
+// function levelChange() {}
