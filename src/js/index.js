@@ -37,7 +37,7 @@ const home = document.querySelectorAll(".home--js");
 start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameWorkout.classList.remove("hide");
-	showExerciseSet();
+	// showExerciseSet();
 });
 history.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -86,29 +86,43 @@ function runHome() {
 
 //set
 
-localStorage.setItem(
-	"exercises",
-	JSON.stringify({ squats: 10, situps: 10, pushups: 10 })
-);
+// localStorage.setItem(
+// 	"exercises",
+// 	JSON.stringify({ squats: 10, situps: 10, pushups: 10 })
+// );
 
-const localJSON = localStorage.getItem("exercises");
+// const localJSON = localStorage.getItem("exercises");
+// const exerciseSetObject = JSON.parse(localJSON);
 
-const exerciseSetObject = JSON.parse(localJSON);
+function updateExercises() {
+	const localJSON = localStorage.getItem("exercises");
+	const exerciseSetObject = JSON.parse(localJSON);
+	function showExerciseSet() {
+		if (exerciseSetObject) {
+			Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
+				exerciseSetDisplay.forEach((input) => {
+					input.innerHTML += `<p class="exercise_set">${val}: ${exerciseSetObject[val]}</p>`;
+				});
+			});
+		}
+	}
+	showExerciseSet();
+}
 
 //places to show object items
 const exerciseSetDisplay = document.querySelectorAll(".exercise_set--js");
 //
 
 // display current exercise set values taken from local storage
-function showExerciseSet() {
-	if (exerciseSetObject) {
-		Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
-			exerciseSetDisplay.forEach((input) => {
-				input.innerHTML += `<p class="exercise_set">${val}: ${exerciseSetObject[val]}</p>`;
-			});
-		});
-	}
-}
+// function showExerciseSet() {
+// 	if (exerciseSetObject) {
+// 		Object.getOwnPropertyNames(exerciseSetObject).forEach((val) => {
+// 			exerciseSetDisplay.forEach((input) => {
+// 				input.innerHTML += `<p class="exercise_set">${val}: ${exerciseSetObject[val]}</p>`;
+// 			});
+// 		});
+// 	}
+// }
 
 // del above to prevent stacking dom elements
 function removeExerciseDisplay() {
@@ -199,32 +213,43 @@ lev9.addEventListener("click", () => {
 	levelDisplay.forEach((input) => {
 		input.innerHTML = "9";
 	});
+	levelUpdate();
+	removeExerciseDisplay();
+	updateExercises();
 });
+
 lev10.addEventListener("click", () => {
 	localStorage.setItem("level", 10);
 	levelDisplay.forEach((input) => {
 		input.innerHTML = "10";
 	});
+	levelUpdate();
+	removeExerciseDisplay();
+	updateExercises();
 });
 
 const levelDisplay = document.querySelectorAll(".level_display--js");
 
-const entryLevel = localStorage.getItem("level");
-let resultLevel = "";
-
-if (entryLevel) {
-	resultLevel = entryLevel;
+function levelUpdate() {
+	const entryLevel = localStorage.getItem("level");
+	let resultLevel = "";
+	if (entryLevel) {
+		resultLevel = entryLevel;
+	}
+	localStorage.setItem(
+		"exercises",
+		JSON.stringify({
+			squats: resultLevel * 10,
+			situps: resultLevel * 10,
+			pushups: resultLevel * 10,
+		})
+	);
+	levelDisplay.forEach((input) => {
+		input.innerHTML = resultLevel;
+	});
 }
-console.log(resultLevel);
 
-levelDisplay.forEach((input) => {
-	input.innerHTML = resultLevel;
-});
-
-localStorage.setItem(
-	"exercises",
-	JSON.stringify({ squats: 10, situps: 10, pushups: 10 })
-);
+levelUpdate();
 
 // levelChangeKey.addEventListener("click", levelChange);
 
