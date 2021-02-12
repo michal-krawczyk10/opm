@@ -288,8 +288,15 @@ function action() {
 		squatsArc();
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsArc();
+	} else if (situps && situpsFlag !== true) {
+		situpsArc();
 	} else {
 		console.log("ok");
+		frameSitups.classList.add("hide");
+		framePushups.classList.add("hide");
+		frameSquats.classList.add("hide");
+		frameAction.classList.add('hide');
+		frameDone.classList.remove("hide");
 	}
 }
 
@@ -303,12 +310,19 @@ function squatsArc() {
 	framePushups.classList.add("hide");
 	frameSquats.classList.remove("hide");
 	squatsFlag = true;
-	console.log("zmiana flagi");
+	console.log(squatsFlag);
 }
 function pushupsArc() {
 	frameSitups.classList.add("hide");
 	framePushups.classList.remove("hide");
 	frameSquats.classList.add("hide");
-	squatsFlag = true;
-	console.log("zmiana flagi");
+	pushupsFlag = true;
+	console.log(pushupsFlag);
+}
+function situpsArc() {
+	frameSitups.classList.remove("hide");
+	framePushups.classList.add("hide");
+	frameSquats.classList.add("hide");
+	situpsFlag = true;
+	console.log(situpsFlag);
 }
