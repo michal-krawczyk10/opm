@@ -34,7 +34,7 @@ const modify = document.querySelector(".modify--js");
 //level 3
 const go = document.querySelectorAll(".go--js");
 //level 4
-const done = document.querySelector(".done--js");
+const done = document.querySelectorAll(".done--js");
 const home = document.querySelectorAll(".home--js");
 
 // 1 level
@@ -75,10 +75,13 @@ function runGo() {
 }
 
 //4 level
-done.addEventListener("click", () => {
-	frameAction.classList.add("hide");
-	frameDone.classList.remove("hide");
-});
+done.forEach((input) =>
+	input.addEventListener("click", () => {
+		frameAction.classList.add("hide");
+		frameDone.classList.remove("hide");
+		console.log("click");
+	})
+);
 
 home.forEach((input) => input.addEventListener("click", runHome));
 function runHome() {
@@ -279,18 +282,33 @@ function action() {
 
 	console.log(ex);
 
-	const {squats, pushups, situps} = ex;
-	
+	const { squats, pushups, situps } = ex;
+
 	if (squats && squatsFlag !== true) {
-	squatsArc();
-	}	else {console.log('ok')}
+		squatsArc();
+	} else if (pushups && pushupsFlag !== true) {
+		pushupsArc();
+	} else {
+		console.log("ok");
+	}
 }
+
+//flags
 let squatsFlag = false;
+let situpsFlag = false;
+let pushupsFlag = false;
 
 function squatsArc() {
-	frameSitups.classList.add('hide');
-	framePushups.classList.add('hide');
-	frameSquats.classList.remove('hide');
+	frameSitups.classList.add("hide");
+	framePushups.classList.add("hide");
+	frameSquats.classList.remove("hide");
 	squatsFlag = true;
-	console.log('zmiana flagi');
+	console.log("zmiana flagi");
+}
+function pushupsArc() {
+	frameSitups.classList.add("hide");
+	framePushups.classList.remove("hide");
+	frameSquats.classList.add("hide");
+	squatsFlag = true;
+	console.log("zmiana flagi");
 }
