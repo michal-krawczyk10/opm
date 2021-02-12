@@ -299,12 +299,15 @@ function action() {
 	if (squats && squatsFlag !== true) {
 		squatsCounter.innerHTML = `do ${squats} squats`;
 		squatsArc();
+		squatsNumDone += squats;
 	} else if (pushups && pushupsFlag !== true) {
-		pushupsCounter.innerHTML = `do ${squats} squats`;
+		pushupsCounter.innerHTML = `do ${pushups} pushups`;
 		pushupsArc();
+		pushupsNumDone += pushups;
 	} else if (situps && situpsFlag !== true) {
-		situpsCounter.innerHTML = `do ${squats} squats`;
+		situpsCounter.innerHTML = `do ${situps} situps`;
 		situpsArc();
+		situpsNumDone += situps;
 	} else {
 		frameSitups.classList.add("hide");
 		framePushups.classList.add("hide");
@@ -319,6 +322,9 @@ let squatsFlag = false;
 let situpsFlag = false;
 let pushupsFlag = false;
 
+let squatsNumDone = 0;
+let situpsNumDone = 0;
+let pushupsNumDone = 0;
 
 function squatsArc() {
 	frameSitups.classList.add("hide");
