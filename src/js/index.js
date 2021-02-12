@@ -23,6 +23,7 @@ const frameSitups = document.querySelector(".situps_action--js");
 const framePushups = document.querySelector(".pushups_action--js");
 
 //BUTTONS
+//querySelectors
 //level 1
 const start = document.querySelector(".start--js");
 const history = document.querySelector(".history--js");
@@ -36,7 +37,8 @@ const go = document.querySelectorAll(".go--js");
 //level 4
 const done = document.querySelectorAll(".done--js");
 const home = document.querySelectorAll(".home--js");
-
+const next = document.querySelectorAll(".next--js");
+//ACTIONS ON BUTTONS
 // 1 level
 start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -79,7 +81,6 @@ done.forEach((input) =>
 	input.addEventListener("click", () => {
 		frameAction.classList.add("hide");
 		frameDone.classList.remove("hide");
-		console.log("click");
 	})
 );
 
@@ -93,6 +94,13 @@ function runHome() {
 	frameFirst.classList.remove("hide");
 }
 
+next.forEach((input) =>
+	input.addEventListener("click", () => {
+		console.log('next');
+		action();
+	})
+);
+
 //set
 
 // localStorage.setItem(
@@ -102,6 +110,8 @@ function runHome() {
 
 // const localJSON = localStorage.getItem("exercises");
 // const exerciseSetObject = JSON.parse(localJSON);
+
+//END OF BUTTONS PART
 
 function updateExercises() {
 	//first get and parce array from local storage
@@ -295,7 +305,7 @@ function action() {
 		frameSitups.classList.add("hide");
 		framePushups.classList.add("hide");
 		frameSquats.classList.add("hide");
-		frameAction.classList.add('hide');
+		frameAction.classList.add("hide");
 		frameDone.classList.remove("hide");
 	}
 }
