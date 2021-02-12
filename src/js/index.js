@@ -96,7 +96,7 @@ function runHome() {
 
 next.forEach((input) =>
 	input.addEventListener("click", () => {
-		console.log('next');
+		console.log("next");
 		action();
 	})
 );
@@ -284,24 +284,28 @@ levelUpdate();
 
 // action
 
+const squatsCounter = document.querySelector(".squats__count--js");
+const situpsCounter = document.querySelector(".situps__count--js");
+const pushupsCounter = document.querySelector(".pushups__count--js");
+
 function action() {
 	//first get data from local storage
 	const localJSON = localStorage.getItem("exercises");
 	const exerciseSetObject = JSON.parse(localJSON);
 	const ex = exerciseSetObject;
 
-	console.log(ex);
-
 	const { squats, pushups, situps } = ex;
 
 	if (squats && squatsFlag !== true) {
+		squatsCounter.innerHTML = `do ${squats} squats`;
 		squatsArc();
 	} else if (pushups && pushupsFlag !== true) {
+		pushupsCounter.innerHTML = `do ${squats} squats`;
 		pushupsArc();
 	} else if (situps && situpsFlag !== true) {
+		situpsCounter.innerHTML = `do ${squats} squats`;
 		situpsArc();
 	} else {
-		console.log("ok");
 		frameSitups.classList.add("hide");
 		framePushups.classList.add("hide");
 		frameSquats.classList.add("hide");
@@ -314,6 +318,7 @@ function action() {
 let squatsFlag = false;
 let situpsFlag = false;
 let pushupsFlag = false;
+
 
 function squatsArc() {
 	frameSitups.classList.add("hide");
@@ -336,3 +341,13 @@ function situpsArc() {
 	situpsFlag = true;
 	console.log(situpsFlag);
 }
+
+// date
+
+const day = new Date();
+let lastSavedDay = [];
+
+let today = day.toLocaleString("pl-PL");
+console.log(today);
+
+const exerciseHistory = localStorage.setItem("history", today);
