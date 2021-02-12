@@ -17,6 +17,10 @@ const frameLevel = document.querySelector(".frame__level--js");
 //level 3
 const frameAction = document.querySelector(".frame__action--js");
 const frameDone = document.querySelector(".frame__done--js");
+//level 4 - action frames
+const frameSquats = document.querySelector('.squats_action--js');
+const frameSitups = document.querySelector('.situps_action--js');
+const framePushups = document.querySelector('.pushups_action--js');
 
 //BUTTONS
 //level 1
@@ -61,12 +65,13 @@ modify.addEventListener("click", () => {
 //3 level
 go.forEach((input) => input.addEventListener("click", runGo));
 
-go.forEach((input) => input.addEventListener("click", removeExerciseDisplay));
+go.forEach((input) => input.addEventListener("click", removeExerciseDisplay)); // to prevent innerhtml stacking later on
 
 function runGo() {
 	frameStandard.classList.add("hide");
 	frameModify.classList.add("hide");
 	frameAction.classList.remove("hide");
+	action();
 }
 
 //4 level
@@ -96,6 +101,7 @@ function runHome() {
 // const exerciseSetObject = JSON.parse(localJSON);
 
 function updateExercises() {
+	//first get and parce array from local storage
 	const localJSON = localStorage.getItem("exercises");
 	const exerciseSetObject = JSON.parse(localJSON);
 	// display current exercise set values taken from local storage
@@ -111,7 +117,7 @@ function updateExercises() {
 	showExerciseSet();
 }
 
-// del above to prevent stacking dom elements
+// del exercise display to prevent stacking dom elements
 function removeExerciseDisplay() {
 	const removeExercise = document.querySelectorAll(".exercise_set");
 	removeExercise.forEach((input) => {
@@ -215,9 +221,9 @@ lev8.addEventListener("click", () => {
 	localStorage.setItem("level", 8);
 	levelDisplay.forEach((input) => {
 		input.innerHTML = "8";
-	levelUpdate();
-	removeExerciseDisplay();
-	updateExercises();
+		levelUpdate();
+		removeExerciseDisplay();
+		updateExercises();
 	});
 });
 lev9.addEventListener("click", () => {
@@ -263,6 +269,20 @@ function levelUpdate() {
 
 levelUpdate();
 
-// levelChangeKey.addEventListener("click", levelChange);
+// action
 
-// function levelChange() {}
+function action() {
+	//first get data from local storage
+	const localJSON = localStorage.getItem("exercises");
+	const exerciseSetObject = JSON.parse(localJSON);
+	const ex = exerciseSetObject;
+
+	console.log(ex);
+
+	if (ex.squats) {
+	frameSquats.classList.remove('hide');
+}
+
+}
+
+
