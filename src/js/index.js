@@ -18,9 +18,9 @@ const frameLevel = document.querySelector(".frame__level--js");
 const frameAction = document.querySelector(".frame__action--js");
 const frameDone = document.querySelector(".frame__done--js");
 //level 4 - action frames
-const frameSquats = document.querySelector('.squats_action--js');
-const frameSitups = document.querySelector('.situps_action--js');
-const framePushups = document.querySelector('.pushups_action--js');
+const frameSquats = document.querySelector(".squats_action--js");
+const frameSitups = document.querySelector(".situps_action--js");
+const framePushups = document.querySelector(".pushups_action--js");
 
 //BUTTONS
 //level 1
@@ -279,10 +279,18 @@ function action() {
 
 	console.log(ex);
 
-	if (ex.squats) {
+	const {squats, pushups, situps} = ex;
+	
+	if (squats && squatsFlag !== true) {
+	squatsArc();
+	}	else {console.log('ok')}
+}
+let squatsFlag = false;
+
+function squatsArc() {
+	frameSitups.classList.add('hide');
+	framePushups.classList.add('hide');
 	frameSquats.classList.remove('hide');
+	squatsFlag = true;
+	console.log('zmiana flagi');
 }
-
-}
-
-
