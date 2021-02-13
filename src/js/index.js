@@ -97,7 +97,6 @@ function runHome() {
 
 next.forEach((input) =>
 	input.addEventListener("click", () => {
-		console.log("next");
 		action();
 	})
 );
@@ -168,10 +167,10 @@ const lev8 = document.querySelector(".l8--js");
 const lev9 = document.querySelector(".l9--js");
 const lev10 = document.querySelector(".l10--js");
 
-const defaultLevel = localStorage.getItem('level');
+const defaultLevel = localStorage.getItem("level");
 if (!defaultLevel) {
 	localStorage.setItem("level", 1);
-};
+}
 
 lev1.addEventListener("click", () => {
 	localStorage.setItem("level", 1);
@@ -364,10 +363,10 @@ let exercisesDone = [];
 
 const day = new Date();
 
-let currentDay = "18.02.2021"; //day.toLocaleString("pl-PL").slice(0, 10);
+let currentDay = day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
 
-let localHistory = localStorage.getItem("history");
+const localHistory = localStorage.getItem("history");
 let resultHistory = "";
 
 //settings 'history' localstorage for the first time
@@ -395,3 +394,19 @@ function exerciseHistory() {
 	});
 	localStorage.setItem("history", JSON.stringify(resultHistory));
 }
+
+// display history;
+
+const historyDisplay = document.querySelector(".history__display--js");
+
+resultHistory = JSON.parse(localHistory);
+
+//group all history by day
+
+let dayLogs = resultHistory.reduce(function (r, a) {
+	r[a.currentDay] = r[a.currentDay] || [];
+	r[a.currentDay].push(a);
+	return r;
+}, Object.create(null));
+
+console.log(dayLogs);
