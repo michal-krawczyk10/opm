@@ -359,7 +359,7 @@ let exercisesDone = [];
 
 const day = new Date();
 
-let currentDay = '16.02.2021'; //day.toLocaleString("pl-PL").slice(0, 10);
+let currentDay = "18.02.2021"; //day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
 
 let localHistory = localStorage.getItem("history");
@@ -382,23 +382,11 @@ if (localHistory) {
 function exerciseHistory() {
 	let resultHistory = JSON.parse(localHistory);
 
-	const [one] = resultHistory;
-	const { currentDay: today } = one;
-	if (today === thisDay) {
-		localStorage.setItem(
-			"history",
-			JSON.stringify([
-				{ currentDay, situpsNumDone, pushupsNumDone, squatsNumDone },
-			])
-		);
-		console.log("if");
-	} else {
-		resultHistory.unshift({
-			currentDay,
-			situpsNumDone,
-			pushupsNumDone,
-			squatsNumDone,
-		});
-		localStorage.setItem("history", JSON.stringify(resultHistory));
-	}
+	resultHistory.unshift({
+		currentDay,
+		situpsNumDone,
+		pushupsNumDone,
+		squatsNumDone,
+	});
+	localStorage.setItem("history", JSON.stringify(resultHistory));
 }
