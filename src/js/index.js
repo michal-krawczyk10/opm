@@ -44,6 +44,7 @@ start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameWorkout.classList.remove("hide");
 	updateExercises();
+	// historyBugFix();
 });
 history.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -358,10 +359,10 @@ let exercisesDone = [];
 
 const day = new Date();
 
-let currentDay = day.toLocaleString("pl-PL").slice(0, 10);
+let currentDay = '16.02.2021'; //day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
 
-const localHistory = localStorage.getItem("history");
+let localHistory = localStorage.getItem("history");
 let resultHistory = "";
 
 //settings 'history' localstorage for the first time
@@ -374,10 +375,13 @@ if (localHistory) {
 			{ currentDay, situpsNumDone, pushupsNumDone, squatsNumDone },
 		])
 	);
+	localHistory = localStorage.getItem("history");
+	resultHistory = localHistory;
 }
 
 function exerciseHistory() {
 	let resultHistory = JSON.parse(localHistory);
+
 	const [one] = resultHistory;
 	const { currentDay: today } = one;
 	if (today === thisDay) {
@@ -395,10 +399,6 @@ function exerciseHistory() {
 			pushupsNumDone,
 			squatsNumDone,
 		});
-		localStorage.setItem(
-			"history",
-			JSON.stringify(resultHistory)
-		);
-
+		localStorage.setItem("history", JSON.stringify(resultHistory));
 	}
 }
