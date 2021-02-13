@@ -357,7 +357,6 @@ let exercisesDone = [];
 // date
 
 const day = new Date();
-let lastSavedDay = [];
 
 let currentDay = day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
@@ -365,6 +364,7 @@ let thisDay = currentDay;
 const localHistory = localStorage.getItem("history");
 let resultHistory = "";
 
+//settings 'history' localstorage for the first time
 if (localHistory) {
 	resultHistory = localHistory;
 } else {
@@ -377,8 +377,7 @@ if (localHistory) {
 }
 
 function exerciseHistory() {
-	const localHistory = localStorage.getItem("history");
-	const resultHistory = JSON.parse(localHistory);
+	let resultHistory = JSON.parse(localHistory);
 	const [one] = resultHistory;
 	const { currentDay: today } = one;
 	if (today === thisDay) {
@@ -388,7 +387,7 @@ function exerciseHistory() {
 				{ currentDay, situpsNumDone, pushupsNumDone, squatsNumDone },
 			])
 		);
-		console.log("if - true");
+		console.log("if");
 	} else {
 		resultHistory.unshift({
 			currentDay,
@@ -396,6 +395,10 @@ function exerciseHistory() {
 			pushupsNumDone,
 			squatsNumDone,
 		});
-		console.log("if - false");
+		localStorage.setItem(
+			"history",
+			JSON.stringify(resultHistory)
+		);
+
 	}
 }
