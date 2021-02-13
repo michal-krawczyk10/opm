@@ -296,18 +296,23 @@ function action() {
 
 	const { squats, pushups, situps } = ex;
 
+	// main loop
+
 	if (squats && squatsFlag !== true) {
 		squatsCounter.innerHTML = `do ${squats} squats`;
 		squatsArc();
 		squatsNumDone += squats;
+		exerciseHistory();
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
 		pushupsArc();
 		pushupsNumDone += pushups;
+		exerciseHistory();
 	} else if (situps && situpsFlag !== true) {
 		situpsCounter.innerHTML = `do ${situps} situps`;
 		situpsArc();
 		situpsNumDone += situps;
+		exerciseHistory();
 	} else {
 		frameSitups.classList.add("hide");
 		framePushups.classList.add("hide");
@@ -326,34 +331,71 @@ let squatsNumDone = 0;
 let situpsNumDone = 0;
 let pushupsNumDone = 0;
 
+// exercise arcs
+
 function squatsArc() {
 	frameSitups.classList.add("hide");
 	framePushups.classList.add("hide");
 	frameSquats.classList.remove("hide");
 	squatsFlag = true;
-	console.log(squatsFlag);
 }
 function pushupsArc() {
 	frameSitups.classList.add("hide");
 	framePushups.classList.remove("hide");
 	frameSquats.classList.add("hide");
 	pushupsFlag = true;
-	console.log(pushupsFlag);
 }
 function situpsArc() {
 	frameSitups.classList.remove("hide");
 	framePushups.classList.add("hide");
 	frameSquats.classList.add("hide");
 	situpsFlag = true;
-	console.log(situpsFlag);
 }
+
+let exercisesDone = [];
 
 // date
 
 const day = new Date();
 let lastSavedDay = [];
 
-let today = day.toLocaleString("pl-PL");
-console.log(today);
+let currentDay = day.toLocaleString("pl-PL").slice(0, 10);
+let thisDay = currentDay;
 
-const exerciseHistory = localStorage.setItem("history", today);
+const localHistory = localStorage.getItem("history");
+let resultHistory = "";
+
+if (localHistory) {
+	resultHistory = localHistory;
+} else {
+	localStorage.setItem(
+		"history",
+		JSON.stringify([
+			{ currentDay, situpsNumDone, pushupsNumDone, squatsNumDone },
+		])
+	);
+}
+
+function exerciseHistory() {
+	const localHistory = localStorage.getItem("history");
+	const resultHistory = JSON.parse(localHistory);
+	const [one] = resultHistory;
+	const { currentDay: today } = one;
+	if (today === thisDay) {
+		localStorage.setItem(
+			"history",
+			JSON.stringify([
+				{ currentDay, situpsNumDone, pushupsNumDone, squatsNumDone },
+			])
+		);
+		console.log("if - true");
+	} else {
+		resultHistory.unshift({
+			currentDay,
+			situpsNumDone,
+			pushupsNumDone,
+			squatsNumDone,
+		});
+		console.log("if - false");
+	}
+}
