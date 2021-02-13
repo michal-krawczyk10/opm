@@ -168,6 +168,11 @@ const lev8 = document.querySelector(".l8--js");
 const lev9 = document.querySelector(".l9--js");
 const lev10 = document.querySelector(".l10--js");
 
+const defaultLevel = localStorage.getItem('level');
+if (!defaultLevel) {
+	localStorage.setItem("level", 1);
+};
+
 lev1.addEventListener("click", () => {
 	localStorage.setItem("level", 1);
 	levelDisplay.forEach((input) => {
