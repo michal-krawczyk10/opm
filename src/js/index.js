@@ -402,7 +402,7 @@ if (localHistory) {
 	localStorage.setItem(
 		"history",
 		JSON.stringify([
-			{ currentDay, situpsNumDone, pushupsNumDone, squatsNumDone },
+			{ currentDay, dailySitups, dailyPushups, dailySquats },
 		])
 	);
 	localHistory = localStorage.getItem("history");
@@ -425,7 +425,7 @@ function exerciseHistory() {
 			...resultHistory[objIndex],
 			situpsNumDone,
 			pushupsNumDone,
-			squatsNumDone,
+			dailySquats,
 		};
 
 		//make final new array of objects by combining updated object
@@ -443,7 +443,7 @@ function exerciseHistory() {
 			currentDay,
 			situpsNumDone,
 			pushupsNumDone,
-			squatsNumDone,
+			dailySquats,
 		});
 		localStorage.setItem("history", JSON.stringify(resultHistory));
 	}
