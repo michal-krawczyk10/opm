@@ -294,16 +294,33 @@ const squatsCounter = document.querySelector(".squats__count--js");
 const situpsCounter = document.querySelector(".situps__count--js");
 const pushupsCounter = document.querySelector(".pushups__count--js");
 
-//
+// local storage for daily ex, starting flow
 let localSquats = localStorage.getItem("daily squats");
 let dailySquats = 0;
 if (localSquats) {
-	dailySquats = localSquats;
+	dailySquats = JSON.parse(localSquats);
 } else {
 	localStorage.setItem("daily squats", JSON.stringify(0));
 	dailySquats = localSquats;
 }
 
+let localSitups = localStorage.getItem("daily situps");
+let dailySitups = 0;
+if (localSitups) {
+	dailySitups = JSON.parse(localSitups);
+} else {
+	localStorage.setItem("daily situps", JSON.stringify(0));
+	dailySitups = localSitups;
+}
+
+let localPushups = localStorage.getItem("daily pushups");
+let dailyPushups = 0;
+if (localPushups) {
+	dailyPushups = JSON.parse(localPushups);
+} else {
+	localStorage.setItem("daily pushups", JSON.stringify(0));
+	dailyPushups = localPushups;
+}
 //
 
 function action() {
@@ -328,12 +345,18 @@ function action() {
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
 		pushupsArc();
-		pushupsNumDone += pushups;
+		let localPushups = localStorage.getItem(" daily pushups");
+		dailyPushups = JSON.parse(localPushups);
+		dailyPushups += pushups;
+		localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
 		exerciseHistory();
 	} else if (situps && situpsFlag !== true) {
 		situpsCounter.innerHTML = `do ${situps} situps`;
 		situpsArc();
-		situpsNumDone += situps;
+		let localSitups = localStorage.getItem(" daily situps");
+		dailySitups = JSON.parse(localSitups);
+		dailySitups += situps;
+		localStorage.setItem("daily situps", JSON.stringify(dailySitups));
 		exerciseHistory();
 	} else {
 		frameSitups.classList.add("hide");
@@ -348,10 +371,6 @@ function action() {
 let squatsFlag = false;
 let situpsFlag = false;
 let pushupsFlag = false;
-
-let squatsNumDone = 0;
-let situpsNumDone = 0;
-let pushupsNumDone = 0;
 
 // flags: make temporarly local storage to hold record for multisessions in same day, to calculate total exercise number for history local storage
 
@@ -401,9 +420,7 @@ if (localHistory) {
 } else {
 	localStorage.setItem(
 		"history",
-		JSON.stringify([
-			{ currentDay, dailySitups, dailyPushups, dailySquats },
-		])
+		JSON.stringify([{ currentDay, dailySitups, dailyPushups, dailySquats }])
 	);
 	localHistory = localStorage.getItem("history");
 	resultHistory = localHistory;
@@ -423,8 +440,8 @@ function exerciseHistory() {
 		//make new object of updated object
 		const updatedObj = {
 			...resultHistory[objIndex],
-			situpsNumDone,
-			pushupsNumDone,
+			dailySitups,
+			dailyPushups,
 			dailySquats,
 		};
 
@@ -438,11 +455,10 @@ function exerciseHistory() {
 		//save to local storage
 		localStorage.setItem("history", JSON.stringify(updatedHistory));
 	} else {
-		console.log("false");
 		resultHistory.unshift({
 			currentDay,
-			situpsNumDone,
-			pushupsNumDone,
+			dailySitups,
+			dailyPushups,
 			dailySquats,
 		});
 		localStorage.setItem("history", JSON.stringify(resultHistory));
