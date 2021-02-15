@@ -102,15 +102,6 @@ next.forEach((input) =>
 	})
 );
 
-//set
-
-// localStorage.setItem(
-// 	"exercises",
-// 	JSON.stringify({ squats: 10, situps: 10, pushups: 10 })
-// );
-
-// const localJSON = localStorage.getItem("exercises");
-// const exerciseSetObject = JSON.parse(localJSON);
 
 //END OF BUTTONS PART
 
@@ -342,18 +333,21 @@ function action() {
 		localStorage.setItem("daily squats", JSON.stringify(dailySquats));
 
 		exerciseHistory();
+
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
 		pushupsArc();
-		let localPushups = localStorage.getItem(" daily pushups");
+		let localPushups = localStorage.getItem("daily pushups");
 		dailyPushups = JSON.parse(localPushups);
 		dailyPushups += pushups;
 		localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
+
 		exerciseHistory();
+
 	} else if (situps && situpsFlag !== true) {
 		situpsCounter.innerHTML = `do ${situps} situps`;
 		situpsArc();
-		let localSitups = localStorage.getItem(" daily situps");
+		let localSitups = localStorage.getItem("daily situps");
 		dailySitups = JSON.parse(localSitups);
 		dailySitups += situps;
 		localStorage.setItem("daily situps", JSON.stringify(dailySitups));
@@ -368,6 +362,7 @@ function action() {
 }
 
 //flags
+
 let squatsFlag = false;
 let situpsFlag = false;
 let pushupsFlag = false;
@@ -475,4 +470,4 @@ function records() {
 	historyDisplay.innerHTML = `${resultHistory[0].currentDay}: squats - ${resultHistory[0].squatsNumDone};`;
 }
 
-// resultHistory = JSON.parse(localHistory);
+// 
