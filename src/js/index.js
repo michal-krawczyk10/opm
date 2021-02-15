@@ -44,7 +44,7 @@ start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameWorkout.classList.remove("hide");
 	updateExercises();
-	// historyBugFix();
+	dailyReset();
 });
 history.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -101,7 +101,6 @@ next.forEach((input) =>
 		action();
 	})
 );
-
 
 //END OF BUTTONS PART
 
@@ -333,7 +332,6 @@ function action() {
 		localStorage.setItem("daily squats", JSON.stringify(dailySquats));
 
 		exerciseHistory();
-
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
 		pushupsArc();
@@ -343,7 +341,6 @@ function action() {
 		localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
 
 		exerciseHistory();
-
 	} else if (situps && situpsFlag !== true) {
 		situpsCounter.innerHTML = `do ${situps} situps`;
 		situpsArc();
@@ -403,7 +400,7 @@ function situpsArc() {
 
 const day = new Date();
 
-let currentDay = "30.02.2012"; //day.toLocaleString("pl-PL").slice(0, 10);
+let currentDay = "13.02.2012"; //day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
 
 let localHistory = localStorage.getItem("history");
@@ -457,6 +454,7 @@ function exerciseHistory() {
 			dailySquats,
 		});
 		localStorage.setItem("history", JSON.stringify(resultHistory));
+		console.log("else");
 	}
 }
 
@@ -470,4 +468,16 @@ function records() {
 	historyDisplay.innerHTML = `${resultHistory[0].currentDay}: squats - ${resultHistory[0].squatsNumDone};`;
 }
 
-// 
+//
+function dailyReset() {
+	let localHistory = localStorage.getItem("history");
+	let resultHistory = JSON.parse(localHistory);
+	if (resultHistory[0].currentDay !== thisDay) {
+		dailySitups = 0;
+		localStorage.setItem("daily situps", JSON.stringify(dailySitups));
+		dailyPushups = 0;
+		localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
+		dailySquats = 0;
+		localStorage.setItem("daily squats", JSON.stringify(dailySquats));
+	}
+}
