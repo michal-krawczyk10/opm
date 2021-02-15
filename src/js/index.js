@@ -49,6 +49,7 @@ start.addEventListener("click", () => {
 history.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameHistory.classList.remove("hide");
+	records();
 });
 settings.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -366,7 +367,7 @@ const day = new Date();
 let currentDay = day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
 
-const localHistory = localStorage.getItem("history");
+let localHistory = localStorage.getItem("history");
 let resultHistory = "";
 
 //settings 'history' localstorage for the first time
@@ -383,30 +384,54 @@ if (localHistory) {
 	resultHistory = localHistory;
 }
 
+// funcion saving exercises as an array of objects in local storage, each object being separate day. If changing current day, it will replace only current day object, while if that does not exist, will make new obj.
 function exerciseHistory() {
 	let resultHistory = JSON.parse(localHistory);
 
-	resultHistory.unshift({
-		currentDay,
-		situpsNumDone,
-		pushupsNumDone,
-		squatsNumDone,
-	});
-	localStorage.setItem("history", JSON.stringify(resultHistory));
+	if (resultHistory[0].currentDay === thisDay) {
+		//find the index of object from array to update, check is object currentDay value same as global variable checking actual date
+		console.log("true");
+		const objIndex = resultHistory.findIndex(
+			(obj) => obj.currentDay === thisDay
+		);
+
+		//make new object of updated object
+		const updatedObj = {
+			...resultHistory[objIndex],
+			situpsNumDone,
+			pushupsNumDone,
+			squatsNumDone,
+		};
+
+		//make final new array of objects by combining updated object
+		const updatedHistory = [
+			...resultHistory.slice(0, objIndex),
+			updatedObj,
+			...resultHistory.slice(objIndex + 1),
+		];
+
+		//save to local storage
+		localStorage.setItem("history", JSON.stringify(updatedHistory));
+	} else {
+		console.log("false");
+		resultHistory.unshift({
+			currentDay,
+			situpsNumDone,
+			pushupsNumDone,
+			squatsNumDone,
+		});
+		localStorage.setItem("history", JSON.stringify(resultHistory));
+	}
 }
 
 // display history;
 
 const historyDisplay = document.querySelector(".history__display--js");
 
-resultHistory = JSON.parse(localHistory);
+function records() {
+	localHistory = localStorage.getItem("history");
+	resultHistory = JSON.parse(localHistory);
+	historyDisplay.innerHTML = `${resultHistory[0].currentDay}: squats - ${resultHistory[0].squatsNumDone};`
+}
 
-//group all history by day
-
-let dayLogs = resultHistory.reduce(function (r, a) {
-	r[a.currentDay] = r[a.currentDay] || [];
-	r[a.currentDay].push(a);
-	return r;
-}, Object.create(null));
-
-console.log(dayLogs);
+// resultHistory = JSON.parse(localHistory);
