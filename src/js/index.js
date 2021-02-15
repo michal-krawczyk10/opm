@@ -288,11 +288,23 @@ function levelUpdate() {
 
 levelUpdate();
 
-// action
+// main action
 
 const squatsCounter = document.querySelector(".squats__count--js");
 const situpsCounter = document.querySelector(".situps__count--js");
 const pushupsCounter = document.querySelector(".pushups__count--js");
+
+//
+let localSquats = localStorage.getItem("daily squats");
+let dailySquats = 0;
+if (localSquats) {
+	dailySquats = localSquats;
+} else {
+	localStorage.setItem("daily squats", JSON.stringify(0));
+	dailySquats = localSquats;
+}
+
+//
 
 function action() {
 	//first get data from local storage
@@ -307,7 +319,11 @@ function action() {
 	if (squats && squatsFlag !== true) {
 		squatsCounter.innerHTML = `do ${squats} squats`;
 		squatsArc();
-		squatsNumDone += squats;
+		let localSquats = localStorage.getItem("daily squats");
+		dailySquats = JSON.parse(localSquats);
+		dailySquats += squats;
+		localStorage.setItem("daily squats", JSON.stringify(dailySquats));
+
 		exerciseHistory();
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
@@ -337,6 +353,17 @@ let squatsNumDone = 0;
 let situpsNumDone = 0;
 let pushupsNumDone = 0;
 
+// flags: make temporarly local storage to hold record for multisessions in same day, to calculate total exercise number for history local storage
+
+// function dailyEx() {
+// 	localHistory = localStorage.getItem("history");
+// 	resultHistory = JSON.parse(localHistory);
+// 	console.log(resultHistory[0]);
+// 	let dailySquats = squatsNumDone;
+
+// 	console.log(dailySquats);
+// }
+
 // exercise arcs
 
 function squatsArc() {
@@ -358,13 +385,11 @@ function situpsArc() {
 	situpsFlag = true;
 }
 
-let exercisesDone = [];
-
 // date
 
 const day = new Date();
 
-let currentDay = day.toLocaleString("pl-PL").slice(0, 10);
+let currentDay = "30.02.2012"; //day.toLocaleString("pl-PL").slice(0, 10);
 let thisDay = currentDay;
 
 let localHistory = localStorage.getItem("history");
@@ -386,11 +411,11 @@ if (localHistory) {
 
 // funcion saving exercises as an array of objects in local storage, each object being separate day. If changing current day, it will replace only current day object, while if that does not exist, will make new obj.
 function exerciseHistory() {
+	let localHistory = localStorage.getItem("history");
 	let resultHistory = JSON.parse(localHistory);
 
 	if (resultHistory[0].currentDay === thisDay) {
 		//find the index of object from array to update, check is object currentDay value same as global variable checking actual date
-		console.log("true");
 		const objIndex = resultHistory.findIndex(
 			(obj) => obj.currentDay === thisDay
 		);
@@ -431,7 +456,7 @@ const historyDisplay = document.querySelector(".history__display--js");
 function records() {
 	localHistory = localStorage.getItem("history");
 	resultHistory = JSON.parse(localHistory);
-	historyDisplay.innerHTML = `${resultHistory[0].currentDay}: squats - ${resultHistory[0].squatsNumDone};`
+	historyDisplay.innerHTML = `${resultHistory[0].currentDay}: squats - ${resultHistory[0].squatsNumDone};`;
 }
 
 // resultHistory = JSON.parse(localHistory);
