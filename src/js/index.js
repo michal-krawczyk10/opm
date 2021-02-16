@@ -39,6 +39,7 @@ const done = document.querySelectorAll(".done--js");
 const home = document.querySelectorAll(".home--js");
 const next = document.querySelectorAll(".next--js");
 const repeat = document.querySelectorAll(".repeat--js");
+const deleteRecords = document.querySelectorAll(".deleteRecord--js");
 
 //ACTIONS ON BUTTONS
 // 1 level
@@ -72,6 +73,8 @@ modify.addEventListener("click", () => {
 go.forEach((input) => input.addEventListener("click", runGo));
 
 go.forEach((input) => input.addEventListener("click", removeExerciseDisplay)); // to prevent innerhtml stacking later on
+
+deleteRecords.forEach((input) => input.addEventListener("click", deleteRecord));
 
 function runGo() {
 	frameStandard.classList.add("hide");
@@ -489,6 +492,13 @@ function records() {
 	localHistory = localStorage.getItem("history");
 	resultHistory = JSON.parse(localHistory);
 	resultHistory.forEach((arrayItem) => {
-		historyDisplay.innerHTML += `<p>${arrayItem.currentDay}:</p><span>situps:${arrayItem.dailySitups};</span><span>squats: ${arrayItem.dailySquats};</span><span>pushups: ${arrayItem.dailyPushups}</span> `;
+		historyDisplay.innerHTML += `<p class="records--js">${arrayItem.currentDay}: <span>situps: ${arrayItem.dailySitups}; </span><span>squats: ${arrayItem.dailySquats}; </span><span>pushups: ${arrayItem.dailyPushups}</span></p>`;
+	});
+}
+
+function deleteRecord() {
+	const recordElement = document.querySelectorAll(".records--js");
+	recordElement.forEach((input) => {
+		input.remove();
 	});
 }
