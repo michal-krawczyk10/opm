@@ -157,11 +157,13 @@ level.addEventListener("click", () => {
 	frameLevel.classList.remove("hide");
 });
 
-const backToModify = document.querySelector(".to_modify--js");
+const backToModify = document.querySelectorAll(".to_modify--js");
 
-backToModify.addEventListener("click", () => {
-	frameLevel.classList.add("hide");
-	frameModify.classList.remove("hide");
+backToModify.forEach((input) => {
+	input.addEventListener("click", () => {
+		frameLevel.classList.add("hide");
+		frameModify.classList.remove("hide");
+	});
 });
 
 //level buttons
@@ -502,3 +504,25 @@ function deleteRecord() {
 		input.remove();
 	});
 }
+
+// random quote generator
+let quotes = [
+	'"Human beings are strong because we have the ability to change ourselves."',
+	'"If you really want to be strong, stop caring about what others think about you."',
+	'"I’ll leave tomorrow’s problems to tomorrow’s me."',
+	'"Do not fight alone."',
+	'"You gotta train like hell until the point where your hair falls out. That’s the only way to become truly strong."',
+	'"100 push-ups, 100 sit-ups, 100 squats, and a 10km run EVERY SINGLE DAY!"',
+	'"A hero must be tough, strong and beautiful ,as well as be able to promptly and splendidly eradicate evil."',
+	'"You have to keep doing it. No matter how difficult it gets."',
+	'"I do it because I want to!"',
+	'"You are too young to worry about failure."',
+	'"Instead of sitting around frustrated, it is better to keep on moving forward."',
+	'"Human beings are strong because we have the ability to change ourselves."', '"Is that the limit of your strength? Could the you of tomorrow beat you of today? Instead of giving in, move forward."', '"If the heroes run and hide, who will stay and fight"?', '"You said you worked hard? Well, maybe you need to work a little longer."', '"If you don’t want to get bossed around or mocked by the people around you… you just need to become stronger."', 
+];
+
+let randomQuote = Math.floor(Math.random()*quotes.length);
+
+const quoteDisplay = document.querySelector('.quote--js');
+
+quoteDisplay.innerHTML = quotes[randomQuote]; 
