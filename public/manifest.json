@@ -1,8 +1,8 @@
 {
   "name": "OPM",
   "short_name": "OPM",
-  "theme_color": "#0D2C54",
-  "background_color": "#0D2C54",
+  "theme_color": "#193549",
+  "background_color": "#193549",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/opm/",
