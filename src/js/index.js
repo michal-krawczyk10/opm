@@ -100,6 +100,7 @@ function runHome() {
 	frameLevel.classList.add("hide");
 	frameRepeat.classList.add("hide");
 	frameFirst.classList.remove("hide");
+	removeExerciseDisplay();
 }
 
 next.forEach((input) =>
@@ -518,11 +519,15 @@ let quotes = [
 	'"I do it because I want to!"',
 	'"You are too young to worry about failure."',
 	'"Instead of sitting around frustrated, it is better to keep on moving forward."',
-	'"Human beings are strong because we have the ability to change ourselves."', '"Is that the limit of your strength? Could the you of tomorrow beat you of today? Instead of giving in, move forward."', '"If the heroes run and hide, who will stay and fight"?', '"You said you worked hard? Well, maybe you need to work a little longer."', '"If you don’t want to get bossed around or mocked by the people around you… you just need to become stronger."', 
+	'"Human beings are strong because we have the ability to change ourselves."',
+	'"Is that the limit of your strength? Could the you of tomorrow beat you of today? Instead of giving in, move forward."',
+	'"If the heroes run and hide, who will stay and fight"?',
+	'"You said you worked hard? Well, maybe you need to work a little longer."',
+	'"If you don’t want to get bossed around or mocked by the people around you… you just need to become stronger."',
 ];
 
-let randomQuote = Math.floor(Math.random()*quotes.length);
+let randomQuote = Math.floor(Math.random() * quotes.length);
 
-const quoteDisplay = document.querySelector('.quote--js');
+const quoteDisplay = document.querySelector(".quote--js");
 
-quoteDisplay.innerHTML = quotes[randomQuote]; 
+quoteDisplay.innerHTML = quotes[randomQuote];
