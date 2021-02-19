@@ -32,6 +32,7 @@ const settings = document.querySelector(".settings--js");
 const standard = document.querySelector(".standard--js");
 const level = document.querySelector(".level--js");
 const modify = document.querySelector(".modify--js");
+const backToWorkout = document.querySelectorAll(".to_workout--js");
 //level 3
 const go = document.querySelectorAll(".go--js");
 //level 4
@@ -75,6 +76,14 @@ go.forEach((input) => input.addEventListener("click", runGo));
 go.forEach((input) => input.addEventListener("click", removeExerciseDisplay)); // to prevent innerhtml stacking later on
 
 deleteRecords.forEach((input) => input.addEventListener("click", deleteRecord));
+
+backToWorkout.forEach((input) =>
+	input.addEventListener("click", () => {
+		frameStandard.classList.add("hide");
+		frameModify.classList.add("hide");
+		frameWorkout.classList.remove("hide");
+	})
+);
 
 function runGo() {
 	frameStandard.classList.add("hide");
