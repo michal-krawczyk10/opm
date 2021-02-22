@@ -35,8 +35,8 @@ main {
 
 .header {
 	text-align: center;
-	margin: 2rem 4rem 1rem 4rem;
-	width: calc(100% - 8rem);
+	margin: 2rem 0 1rem;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	& h1 {
@@ -46,20 +46,20 @@ main {
 }
 
 .quote {
+	background-image: url(https://github.com/michal-krawczyk10/opm/blob/master/src/assets/img/saitamaQuotepng.png?raw=true);
+	background-color: transparent;
+	background-size: cover;
+	background-repeat: no-repeat;
 	text-align: center;
+	min-height: 216px;
+	min-width: 320px;
 	position: relative;
-	
-	&__img {
-		height: 30vh;
-		width: 100%;
-	}
 	&__text_box {
 		position: absolute;
-		top: 2%;
-		right: 6%;
+		top: 6%;
+		right: 7%;
 		width: 40%;
-		height: 90%;
-		border: 1px solid red;
+		height: 80%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -69,12 +69,15 @@ main {
 		color: $main;
 	}
 }
-
-.frame {
-	height: calc(100% - 18rem);
+.container {
+	height: calc(100% - 2rem);
 	width: calc(100% - 2rem);
 	margin: 0 1rem;
 	position: fixed;
+}
+.frame {
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
