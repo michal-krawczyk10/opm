@@ -46,9 +46,28 @@ main {
 }
 
 .quote {
-	border: 1px solid $strike;
 	text-align: center;
-	padding: 1rem;
+	position: relative;
+	
+	&__img {
+		height: 30vh;
+		width: 100%;
+	}
+	&__text_box {
+		position: absolute;
+		top: 2%;
+		right: 6%;
+		width: 40%;
+		height: 90%;
+		border: 1px solid red;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__text {
+		font-size: 0.8rem;
+		color: $main;
+	}
 }
 
 .frame {
