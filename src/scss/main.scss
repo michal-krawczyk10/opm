@@ -14,6 +14,8 @@ html {
 	box-sizing: border-box;
 	margin: 0;
 	font-family: $paprika;
+	line-height: 1.5;
+	font-size: 16px;
 }
 
 body {
@@ -32,26 +34,21 @@ main {
 }
 
 .header {
-	margin: 4rem 4rem 1rem 4rem;
+	text-align: center;
+	margin: 2rem 4rem 1rem 4rem;
 	width: calc(100% - 8rem);
-	max-width: 600px;
 	display: flex;
 	justify-content: center;
-	flex-direction: column;
-	&__logo {
-		width: 4rem;
-		height: 4rem;
-		border: 1px solid $strike;
-		& > img {
-			width: 100%;
-			height: 100%;
-		}
+	& h1 {
+		font-size: 1rem;
+		font-weight: 400;
 	}
-	&__quote {
-		border: 1px solid $strike;
-		text-align: center;
-		padding: 1rem;
-	}
+}
+
+.quote {
+	border: 1px solid $strike;
+	text-align: center;
+	padding: 1rem;
 }
 
 .frame {
