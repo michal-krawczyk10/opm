@@ -399,6 +399,20 @@ function action() {
 		allFlag = true;
 	}
 }
+// new
+const entryLevel = localStorage.getItem("level");
+let resultLevel = "";
+if (entryLevel) {
+	resultLevel = entryLevel;
+}
+
+for (let index = 0; index < array.length; index++) {
+	const element = array[index];
+	
+}
+
+console.log(currentLevel);
+
 
 //flags
 
@@ -548,3 +562,7 @@ let randomQuote = Math.floor(Math.random() * quotes.length);
 const quoteDisplay = document.querySelector(".quote--js");
 
 quoteDisplay.innerHTML = quotes[randomQuote];
+
+//
+
+
