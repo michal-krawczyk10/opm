@@ -22,6 +22,7 @@ const frameSquats = document.querySelector(".squats_action--js");
 const frameSitups = document.querySelector(".situps_action--js");
 const framePushups = document.querySelector(".pushups_action--js");
 const frameRepeat = document.querySelector(".frame__repeat--js");
+const frameAbout = document.querySelector(".frame__about--js");
 //BUTTONS
 //querySelectors
 //level 1
@@ -41,7 +42,7 @@ const home = document.querySelectorAll(".home--js");
 const next = document.querySelectorAll(".next--js");
 const repeat = document.querySelectorAll(".repeat--js");
 const deleteRecords = document.querySelectorAll(".deleteRecord--js");
-
+const about = document.querySelector(".about--js");
 //ACTIONS ON BUTTONS
 // 1 level
 start.addEventListener("click", () => {
@@ -51,7 +52,7 @@ start.addEventListener("click", () => {
 	dailyReset();
 });
 history.addEventListener("click", () => {
-	frameFirst.classList.add("hide");
+	frameWorkout.classList.add("hide");
 	frameHistory.classList.remove("hide");
 	records();
 });
@@ -66,7 +67,7 @@ standard.addEventListener("click", () => {
 	frameStandard.classList.remove("hide");
 });
 modify.addEventListener("click", () => {
-	frameStandard.classList.add('hide');
+	frameStandard.classList.add("hide");
 	frameWorkout.classList.add("hide");
 	frameModify.classList.remove("hide");
 });
@@ -109,6 +110,7 @@ function runHome() {
 	frameHistory.classList.add("hide");
 	frameLevel.classList.add("hide");
 	frameRepeat.classList.add("hide");
+	frameAbout.classList.add("hide");
 	frameFirst.classList.remove("hide");
 	removeExerciseDisplay();
 }
@@ -130,6 +132,11 @@ repeat.forEach((input) =>
 		action();
 	})
 );
+
+about.addEventListener("click", () => {
+	frameFirst.classList.add("hide");
+	frameAbout.classList.remove("hide");
+});
 
 //END OF BUTTONS PART
 
@@ -518,22 +525,22 @@ function deleteRecord() {
 
 // random quote generator
 let quotes = [
-	'Human beings are strong because we have the ability to change ourselves.',
-	'If you really want to be strong, stop caring about what others think about you.',
-	'I’ll leave tomorrow’s problems to tomorrow’s me.',
-	'Do not fight alone.',
-	'You gotta train like hell until the point where your hair falls out. That’s the only way to become truly strong.',
-	'100 push-ups, 100 sit-ups, 100 squats, and a 10km run EVERY SINGLE DAY!',
-	'A hero must be tough, strong and beautiful ,as well as be able to promptly and splendidly eradicate evil.',
-	'You have to keep doing it. No matter how difficult it gets.',
-	'I do it because I want to!',
-	'You are too young to worry about failure.',
-	'Instead of sitting around frustrated, it is better to keep on moving forward.',
-	'Human beings are strong because we have the ability to change ourselves.',
-	'Is that the limit of your strength? Could the you of tomorrow beat you of today? Instead of giving in, move forward.',
-	'If the heroes run and hide, who will stay and fight?',
-	'You said you worked hard? Well, maybe you need to work a little longer.',
-	'If you don’t want to get bossed around or mocked by the people around you… you just need to become stronger.',
+	"Human beings are strong because we have the ability to change ourselves.",
+	"If you really want to be strong, stop caring about what others think about you.",
+	"I’ll leave tomorrow’s problems to tomorrow’s me.",
+	"Do not fight alone.",
+	"You gotta train like hell until the point where your hair falls out. That’s the only way to become truly strong.",
+	"100 push-ups, 100 sit-ups, 100 squats, and a 10km run EVERY SINGLE DAY!",
+	"A hero must be tough, strong and beautiful ,as well as be able to promptly and splendidly eradicate evil.",
+	"You have to keep doing it. No matter how difficult it gets.",
+	"I do it because I want to!",
+	"You are too young to worry about failure.",
+	"Instead of sitting around frustrated, it is better to keep on moving forward.",
+	"Human beings are strong because we have the ability to change ourselves.",
+	"Is that the limit of your strength? Could the you of tomorrow beat you of today? Instead of giving in, move forward.",
+	"If the heroes run and hide, who will stay and fight?",
+	"You said you worked hard? Well, maybe you need to work a little longer.",
+	"If you don’t want to get bossed around or mocked by the people around you… you just need to become stronger.",
 ];
 
 let randomQuote = Math.floor(Math.random() * quotes.length);
