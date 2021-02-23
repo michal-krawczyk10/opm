@@ -25,21 +25,23 @@ body {
 
 main {
 	width: 100%;
+	margin: 0;
 	height: 100%;
 }
 
 .header {
 	height: 7rem;
 	padding: 1rem 0;
-	text-align: center;
+
+	text-align: left;
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	& h1 {
 		font-size: 1rem;
 		font-weight: 400;
+		margin-left: 20%;
 	}
 }
-
 .frame {
 	height: calc(100vh - 7rem);
 	width: 100%;
@@ -62,7 +64,7 @@ main {
 	position: relative;
 	&__text_box {
 		position: absolute;
-		top: 6%;
+		top: 8%;
 		right: 7%;
 		width: 40%;
 		height: 80%;
