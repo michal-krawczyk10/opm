@@ -25,6 +25,8 @@ const frameRepeat = document.querySelector(".frame__repeat--js");
 const frameAbout = document.querySelector(".frame__about--js");
 
 const frameSq1st = document.querySelector(".sqFirst--js");
+const frameSi1st = document.querySelector('.siFirst--js');
+const framePu1st = document.querySelector('.puFirst--js');
 const frameMore = document.querySelectorAll(".more--js");
 const framePartDone = document.querySelector(".part_done--js");
 //BUTTONS
@@ -375,26 +377,17 @@ function action() {
 	} else if (squats && squatsFlag !== true) {
 		squatsCounter.innerHTML = `do 10 squats`;
 		squatsArc();
-
 		squatsFlag = true;
-
 		exerciseHistory();
 	} else if (pushups && pushupsFlag !== true) {
-		pushupsCounter.innerHTML = `do ${pushups} pushups`;
+		pushupsCounter.innerHTML = `do 10 pushups`;
 		pushupsArc();
-		let localPushups = localStorage.getItem("daily pushups");
-		dailyPushups = JSON.parse(localPushups);
-		dailyPushups += pushups;
-		localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
-
+		pushupsFlag = true;
 		exerciseHistory();
 	} else if (situps && situpsFlag !== true) {
 		situpsCounter.innerHTML = `do ${situps} situps`;
 		situpsArc();
-		let localSitups = localStorage.getItem("daily situps");
-		dailySitups = JSON.parse(localSitups);
-		dailySitups += situps;
-		localStorage.setItem("daily situps", JSON.stringify(dailySitups));
+		situpsFlag = true;
 		exerciseHistory();
 	} else {
 		frameSitups.classList.add("hide");
@@ -402,10 +395,11 @@ function action() {
 		frameSquats.classList.add("hide");
 		frameAction.classList.add("hide");
 		frameDone.classList.remove("hide");
+		console.log('done')
 		allFlag = true;
 	}
 }
-// new
+// new Arcs
 
 function squatsArc() {
 	frameSitups.classList.add("hide");
@@ -435,7 +429,6 @@ function squatsArc() {
 					stage++;
 					console.log(stage);
 				} else if (stage == resultLevel) {
-
 					let localSquats = localStorage.getItem("daily squats");
 					dailySquats = JSON.parse(localSquats);
 					dailySquats += 10;
@@ -451,8 +444,94 @@ function squatsArc() {
 		);
 	}
 }
-// for (let index = 0; index < array.length; index++) {
-// 	const element = array[index];
+
+function pushupsArc() {
+	frameSitups.classList.add("hide");
+	framePushups.classList.remove("hide");
+	frameSquats.classList.add("hide");
+	let stage = 0;
+	let doneEx = 0;
+	const entryLevel = localStorage.getItem("level");
+	let resultLevel = "";
+	if (entryLevel) {
+		resultLevel = entryLevel;
+	}
+	if (stage === 0) {
+		framePu1st.classList.remove("hide");
+		stage++;
+
+		goOn.forEach((input) =>
+			input.addEventListener("click", () => {
+				if (stage !== 0 && stage < resultLevel) {
+					framePu1st.classList.add("hide");
+					frameMore.forEach((input) => input.classList.remove("hide"));
+
+					let localPushups = localStorage.getItem("daily pushups");
+					dailyPushups = JSON.parse(localPushups);
+					dailyPushups += 10;
+					localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
+					stage++;
+					console.log(stage);
+				} else if (stage == resultLevel) {
+					let localPushups = localStorage.getItem("daily pushups");
+					dailyPushups = JSON.parse(localPushups);
+					dailyPushups += 10;
+					localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
+
+					framePu1st.classList.add("hide");
+					frameMore.forEach((input) => input.classList.add("hide"));
+					framePartDone.classList.remove("hide");
+					console.log("else");
+					stage = 0;
+				}
+			})
+		);
+	}
+}
+
+function situpsArc() {
+	frameSitups.classList.remove("hide");
+	framePushups.classList.add("hide");
+	frameSquats.classList.add("hide");
+	let stage = 0;
+	let doneEx = 0;
+	const entryLevel = localStorage.getItem("level");
+	let resultLevel = "";
+	if (entryLevel) {
+		resultLevel = entryLevel;
+	}
+	if (stage === 0) {
+		frameSi1st.classList.remove("hide");
+		stage++;
+
+		goOn.forEach((input) =>
+			input.addEventListener("click", () => {
+				if (stage !== 0 && stage < resultLevel) {
+					frameSi1st.classList.add("hide");
+					frameMore.forEach((input) => input.classList.remove("hide"));
+
+					let localSitups = localStorage.getItem("daily situps");
+					dailySitups = JSON.parse(localSitups);
+					dailySitups += 10;
+					localStorage.setItem("daily situps", JSON.stringify(dailySitups));
+					stage++;
+					console.log(stage);
+				} else if (stage == resultLevel) {
+					let localSitups = localStorage.getItem("daily situps");
+					dailySitups = JSON.parse(localSitups);
+					dailySitups += 10;
+					localStorage.setItem("daily situps", JSON.stringify(dailySitups));
+
+					frameSi1st.classList.add("hide");
+					frameMore.forEach((input) => input.classList.add("hide"));
+					framePartDone.classList.remove("hide");
+					console.log("else");
+					stage = 0;
+				}
+			})
+		);
+	}
+}
 
 //flags
 
@@ -470,18 +549,18 @@ let allFlag = false;
 
 // 	squatsFlag = true;
 // }
-function pushupsArc() {
-	frameSitups.classList.add("hide");
-	framePushups.classList.remove("hide");
-	frameSquats.classList.add("hide");
-	pushupsFlag = true;
-}
-function situpsArc() {
-	frameSitups.classList.remove("hide");
-	framePushups.classList.add("hide");
-	frameSquats.classList.add("hide");
-	situpsFlag = true;
-}
+// function pushupsArc() {
+// 	frameSitups.classList.add("hide");
+// 	framePushups.classList.remove("hide");
+// 	frameSquats.classList.add("hide");
+// 	pushupsFlag = true;
+// }
+// function situpsArc() {
+// 	frameSitups.classList.remove("hide");
+// 	framePushups.classList.add("hide");
+// 	frameSquats.classList.add("hide");
+// 	situpsFlag = true;
+// }
 
 // date
 
