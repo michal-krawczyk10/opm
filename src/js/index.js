@@ -23,6 +23,10 @@ const frameSitups = document.querySelector(".situps_action--js");
 const framePushups = document.querySelector(".pushups_action--js");
 const frameRepeat = document.querySelector(".frame__repeat--js");
 const frameAbout = document.querySelector(".frame__about--js");
+
+const frameSq1st = document.querySelector(".sqFirst--js");
+const frameMore = document.querySelectorAll(".more--js");
+const framePartDone = document.querySelector(".part_done--js");
 //BUTTONS
 //querySelectors
 //level 1
@@ -43,7 +47,10 @@ const next = document.querySelectorAll(".next--js");
 const repeat = document.querySelectorAll(".repeat--js");
 const deleteRecords = document.querySelectorAll(".deleteRecord--js");
 const about = document.querySelector(".about--js");
-//ACTIONS ON BUTTONS
+//main loop part
+const goOn = document.querySelectorAll(".go_on--js");
+
+//ACTIONS ON BUTTONS (most of them)
 // 1 level
 start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
@@ -117,6 +124,7 @@ function runHome() {
 
 next.forEach((input) =>
 	input.addEventListener("click", () => {
+		framePartDone.classList.add('hide');
 		action();
 	})
 );
@@ -367,11 +375,9 @@ function action() {
 	} else if (squats && squatsFlag !== true) {
 		squatsCounter.innerHTML = `do 10 squats`;
 		squatsArc();
-		let localSquats = localStorage.getItem("daily squats");
-		dailySquats = JSON.parse(localSquats);
-		dailySquats += squats;
-		localStorage.setItem("daily squats", JSON.stringify(dailySquats));
+
 		squatsFlag = true;
+
 		exerciseHistory();
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
@@ -412,11 +418,38 @@ function squatsArc() {
 	if (entryLevel) {
 		resultLevel = entryLevel;
 	}
+	if (stage === 0) {
+		frameSq1st.classList.remove("hide");
+		stage++;
+
+		goOn.forEach((input) =>
+			input.addEventListener("click", () => {
+				if (stage !== 0 && stage < resultLevel) {
+					frameSq1st.classList.add("hide");
+					frameMore.forEach((input) => input.classList.remove("hide"));
+
+					let localSquats = localStorage.getItem("daily squats");
+					dailySquats = JSON.parse(localSquats);
+					dailySquats += 10;
+					localStorage.setItem("daily squats", JSON.stringify(dailySquats));
+					stage++;
+					console.log(stage);
+				} else {
+					let localSquats = localStorage.getItem("daily squats");
+					dailySquats = JSON.parse(localSquats);
+					dailySquats += 10;
+					localStorage.setItem("daily squats", JSON.stringify(dailySquats));
+
+					frameSq1st.classList.add("hide");
+					frameMore.forEach((input) => input.classList.add("hide"));
+					framePartDone.classList.remove("hide");
+				}
+			})
+		);
+	}
 }
 // for (let index = 0; index < array.length; index++) {
 // 	const element = array[index];
-
-
 
 //flags
 
