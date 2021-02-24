@@ -124,7 +124,7 @@ function runHome() {
 
 next.forEach((input) =>
 	input.addEventListener("click", () => {
-		framePartDone.classList.add('hide');
+		framePartDone.classList.add("hide");
 		action();
 	})
 );
@@ -434,7 +434,8 @@ function squatsArc() {
 					localStorage.setItem("daily squats", JSON.stringify(dailySquats));
 					stage++;
 					console.log(stage);
-				} else {
+				} else if (stage == resultLevel) {
+
 					let localSquats = localStorage.getItem("daily squats");
 					dailySquats = JSON.parse(localSquats);
 					dailySquats += 10;
@@ -443,6 +444,8 @@ function squatsArc() {
 					frameSq1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
 					framePartDone.classList.remove("hide");
+					console.log("else");
+					stage = 0;
 				}
 			})
 		);
