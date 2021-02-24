@@ -52,6 +52,18 @@ main {
 	justify-content: space-around;
 	align-items: center;
 }
+
+.sub_frame {
+	position: fixed;
+}
+
+.squats {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .quote {
 	background-image: url(https://github.com/michal-krawczyk10/opm/blob/master/src/assets/img/saitamaQuotepng.png?raw=true);
 	background-color: transparent;

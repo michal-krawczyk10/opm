@@ -365,13 +365,13 @@ function action() {
 		frameAction.classList.add("hide");
 		frameRepeat.classList.remove("hide");
 	} else if (squats && squatsFlag !== true) {
-		squatsCounter.innerHTML = `do ${squats} squats`;
+		squatsCounter.innerHTML = `do 10 squats`;
 		squatsArc();
 		let localSquats = localStorage.getItem("daily squats");
 		dailySquats = JSON.parse(localSquats);
 		dailySquats += squats;
 		localStorage.setItem("daily squats", JSON.stringify(dailySquats));
-
+		squatsFlag = true;
 		exerciseHistory();
 	} else if (pushups && pushupsFlag !== true) {
 		pushupsCounter.innerHTML = `do ${pushups} pushups`;
@@ -400,18 +400,22 @@ function action() {
 	}
 }
 // new
-const entryLevel = localStorage.getItem("level");
-let resultLevel = "";
-if (entryLevel) {
-	resultLevel = entryLevel;
-}
 
-for (let index = 0; index < array.length; index++) {
-	const element = array[index];
-	
+function squatsArc() {
+	frameSitups.classList.add("hide");
+	framePushups.classList.add("hide");
+	frameSquats.classList.remove("hide");
+	let stage = 0;
+	let doneEx = 0;
+	const entryLevel = localStorage.getItem("level");
+	let resultLevel = "";
+	if (entryLevel) {
+		resultLevel = entryLevel;
+	}
 }
+// for (let index = 0; index < array.length; index++) {
+// 	const element = array[index];
 
-console.log(currentLevel);
 
 
 //flags
@@ -423,12 +427,13 @@ let allFlag = false;
 
 // exercise arcs
 
-function squatsArc() {
-	frameSitups.classList.add("hide");
-	framePushups.classList.add("hide");
-	frameSquats.classList.remove("hide");
-	squatsFlag = true;
-}
+// function squatsArc() {
+// 	frameSitups.classList.add("hide");
+// 	framePushups.classList.add("hide");
+// 	frameSquats.classList.remove("hide");
+
+// 	squatsFlag = true;
+// }
 function pushupsArc() {
 	frameSitups.classList.add("hide");
 	framePushups.classList.remove("hide");
@@ -500,7 +505,6 @@ function exerciseHistory() {
 			dailySquats,
 		});
 		localStorage.setItem("history", JSON.stringify(resultHistory));
-		console.log("else");
 	}
 }
 
@@ -564,5 +568,3 @@ const quoteDisplay = document.querySelector(".quote--js");
 quoteDisplay.innerHTML = quotes[randomQuote];
 
 //
-
-
