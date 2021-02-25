@@ -380,12 +380,12 @@ function action() {
 		squatsFlag = true;
 		exerciseHistory();
 	} else if (pushups && pushupsFlag !== true) {
-		pushupsCounter.innerHTML = `do 10 pushups`;
+		pushupsCounter.innerHTML = `do 10 push ups`;
 		pushupsArc();
 		pushupsFlag = true;
 		exerciseHistory();
 	} else if (situps && situpsFlag !== true) {
-		situpsCounter.innerHTML = `do ${situps} situps`;
+		situpsCounter.innerHTML = `do 10 sit ups`;
 		situpsArc();
 		situpsFlag = true;
 		exerciseHistory();
@@ -399,7 +399,7 @@ function action() {
 		allFlag = true;
 	}
 }
-// new Arcs
+// main loop arcs
 
 function squatsArc() {
 	frameSitups.classList.add("hide");
@@ -540,29 +540,7 @@ let situpsFlag = false;
 let pushupsFlag = false;
 let allFlag = false;
 
-// exercise arcs
-
-// function squatsArc() {
-// 	frameSitups.classList.add("hide");
-// 	framePushups.classList.add("hide");
-// 	frameSquats.classList.remove("hide");
-
-// 	squatsFlag = true;
-// }
-// function pushupsArc() {
-// 	frameSitups.classList.add("hide");
-// 	framePushups.classList.remove("hide");
-// 	frameSquats.classList.add("hide");
-// 	pushupsFlag = true;
-// }
-// function situpsArc() {
-// 	frameSitups.classList.remove("hide");
-// 	framePushups.classList.add("hide");
-// 	frameSquats.classList.add("hide");
-// 	situpsFlag = true;
-// }
-
-// date
+//date
 
 const day = new Date();
 
@@ -645,7 +623,7 @@ function records() {
 	localHistory = localStorage.getItem("history");
 	resultHistory = JSON.parse(localHistory);
 	resultHistory.forEach((arrayItem) => {
-		historyDisplay.innerHTML += `<p class="records--js">${arrayItem.currentDay}: <span>situps: ${arrayItem.dailySitups}; </span><span>squats: ${arrayItem.dailySquats}; </span><span>pushups: ${arrayItem.dailyPushups}</span></p>`;
+		historyDisplay.innerHTML += `<p class="records--js">${arrayItem.currentDay}: <span>sit ups: ${arrayItem.dailySitups}; </span><span>squats: ${arrayItem.dailySquats}; </span><span>push ups: ${arrayItem.dailyPushups}</span></p>`;
 	});
 }
 
