@@ -200,13 +200,13 @@
 				</div>
 				<!--level 2-->
 				<div class="frame frame__standard frame__standard--js hide">
-					<p>your current set</p>
 					<div class="exercise_container--js">
+						<p>your current exercise set<br /></p>
 						<p class="exercise_set--js"></p>
 					</div>
-					<button class="button go--js">go</button>
-					<button class="button modify--js">modify your set</button>
-					<button class="button to_workout--js">back</button>
+						<button class="button go--js">go</button>
+						<button class="button modify--js">modify your set</button>
+						<button class="button to_workout--js">back</button>
 				</div>
 				<div class="frame frame__modify frame__modify--js hide">
 					<p>Your current level is: <span class="level_display--js"></span></p>
@@ -221,38 +221,38 @@
 				</div>
 				<!--level 3-->
 				<div class="frame frame__action frame__action--js hide">
-					<div class="squats sub_frame squats_action--js hide">
-						<div class="sub_frame2 sqFirst--js hide">
+					<div class="squats subframe squats_action--js hide">
+						<div class="subframe2 sqFirst--js hide">
 							<p>squats</p>
 							<p class="squats__count--js"></p>
 							<button class="button go_on--js">go on</button>
 						</div>
-						<div class="sub_frame2 more--js hide">
+						<div class="subframe2 more--js hide">
 							<p class="ex_counter--js"></p>
 							<p>do 10 more</p>
 							<button class="button go_on--js">go on dd</button>
 						</div>
 					</div>
-					<div class="situps sub_frame situps_action--js hide">
-						<div class="sub_frame siFirst--js hide">
+					<div class="situps subframe situps_action--js hide">
+						<div class="subframe siFirst--js hide">
 							<p>sit ups</p>
 							<p class="situps__count--js"></p>
 							<button class="button go_on--js">go on</button>
 						</div>
-						<div class="sub_frame more--js hide">
+						<div class="subframe more--js hide">
 							<p class="ex_counter--js"></p>
 							<p>do 10 more</p>
 							<button class="button go_on--js">go on dd</button>
 						</div>
 					</div>
 
-					<div class="pushups sub_frame pushups_action--js hide">
-						<div class="sub_frame puFirst--js hide">
+					<div class="pushups subframe pushups_action--js hide">
+						<div class="subframe puFirst--js hide">
 							<p>push ups</p>
 							<p class="pushups__count--js"></p>
 							<button class="button go_on--js">go on</button>
 						</div>
-						<div class="sub_frame more--js hide">
+						<div class="subframe more--js hide">
 							<p class="ex_counter--js"></p>
 							<p>do 10 more</p>
 							<button class="button go_on--js">go on dd</button>
@@ -272,20 +272,52 @@
 					><button class="button home--js">nah, I'm fine</button>
 				</div>
 				<div class="frame frame__action frame__level--js hide">
-					<p>Your current level is: <span class="level_display--js"></span></p>
-
-					<p>Choose your level</p>
-					<div>
-						<button class="button set_level--js l1--js to_modify--js">1</button
-						><button class="button set_level--js l2--js to_modify--js">2</button
-						><button class="button set_level--js l3--js to_modify--js">3</button
-						><button class="button set_level--js l4--js to_modify--js">4</button
-						><button class="button set_level--js l5--js to_modify--js">5</button
-						><button class="button set_level--js l6--js to_modify--js">6</button
-						><button class="button set_level--js l7--js to_modify--js">7</button
-						><button class="button set_level--js l8--js to_modify--js">8</button
-						><button class="button set_level--js l9--js to_modify--js">9</button
-						><button class="button set_level--js l10--js to_modify--js">
+					<p>
+						Currently you are on level
+						<span class="level_display--js"></span>.<br /><br />The higher the
+						number, the more repeats of each exercise you will do, 10 of each
+						per level.<br /><br />You can change it here:
+					</p>
+					<div class="frame__levels">
+						<button
+							class="button button__level set_level--js l1--js to_modify--js"
+						>
+							1</button
+						><button
+							class="button button__level set_level--js l2--js to_modify--js"
+						>
+							2</button
+						><button
+							class="button button__level set_level--js l3--js to_modify--js"
+						>
+							3</button
+						><button
+							class="button button__level set_level--js l4--js to_modify--js"
+						>
+							4</button
+						><button
+							class="button button__level set_level--js l5--js to_modify--js"
+						>
+							5</button
+						><button
+							class="button button__level set_level--js l6--js to_modify--js"
+						>
+							6</button
+						><button
+							class="button button__level set_level--js l7--js to_modify--js"
+						>
+							7</button
+						><button
+							class="button button__level set_level--js l8--js to_modify--js"
+						>
+							8</button
+						><button
+							class="button button__level set_level--js l9--js to_modify--js"
+						>
+							9</button
+						><button
+							class="button button__level set_level--js l10--js to_modify--js"
+						>
 							10
 						</button>
 					</div>
