@@ -61,11 +61,6 @@ main {
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	// border: 1px solid red;
-	// &__action {
-	// 	top: 0;
-	// 	height: 100vh;
-	// }
 	&__levels {
 		display: flex;
 		flex-direction: row;
@@ -96,7 +91,7 @@ main {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	border: 1px pink dotted;
+	// border: 1px pink dotted;
 	&__img {
 		display: flex;
 		flex-direction: column;
@@ -112,7 +107,6 @@ main {
 	&__box {
 		height: 60%;
 		width: 100%;
-		border: 1px solid yellow;
 		& > div {
 			position: absolute;
 			width: 100%;
@@ -129,7 +123,6 @@ main {
 
 .subframe2 {
 	position: fixed;
-	border: 1px solid yellow;
 }
 
 .quote {
@@ -182,11 +175,15 @@ main {
 		background: $stroke;
 	}
 	&__main {
-		width: 144px;
-		height: 144px;
+		background: $stroke;
+		color: $main;
+		position: absolute;
+		top: 135%;
+		width: 120px;
+		height: 120px;
 		border-radius: 50%;
-		font-size: 2rem;
-		box-shadow: 0px 0px 24px 24px rgba(252, 231, 98, 1);
+		font-size: 1.5rem;
+		box-shadow: 0px 0px 12px 12px rgba(252, 231, 98, 1);
 	}
 	&__secondary {
 		width: 120px;
@@ -198,6 +195,12 @@ main {
 	left: 12px;
 	top: 8px;
 }
+
+.muscles {
+	width: 80%;
+	max-width: 300px;
+	max-height: 120px;
+	}
 
 .show {
 	visibility: visible;

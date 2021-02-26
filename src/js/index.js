@@ -54,6 +54,7 @@ const goOn = document.querySelectorAll(".go_on--js");
 const sqCount = document.querySelectorAll(".sq_count--js");
 const puCount = document.querySelectorAll(".pu_count--js");
 const siCount = document.querySelectorAll(".si_count--js");
+const setResult = document.querySelector(".done-cnt--js");
 
 //ACTIONS ON BUTTONS (most of them)
 // 1 level
@@ -398,7 +399,8 @@ function action() {
 		frameSquats.classList.add("hide");
 		frameAction.classList.add("hide");
 		frameDone.classList.remove("hide");
-		console.log("done");
+		const entryLevel = localStorage.getItem("level");
+		setResult.innerHTML = `<p>this time you did:</p><p>squats - ${entryLevel * 10}</p><p>push ups - ${entryLevel * 10}</p><p>sit ups - ${entryLevel * 10}`;
 		allFlag = true;
 	}
 }
@@ -409,7 +411,6 @@ function squatsArc() {
 	framePushups.classList.add("hide");
 	frameSquats.classList.remove("hide");
 	let stage = 0;
-	let doneEx = 0;
 	const entryLevel = localStorage.getItem("level");
 	let resultLevel = "";
 	if (entryLevel) {
@@ -458,7 +459,6 @@ function pushupsArc() {
 	framePushups.classList.remove("hide");
 	frameSquats.classList.add("hide");
 	let stage = 0;
-	let doneEx = 0;
 	const entryLevel = localStorage.getItem("level");
 	let resultLevel = "";
 	if (entryLevel) {
