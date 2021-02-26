@@ -25,8 +25,8 @@ const frameRepeat = document.querySelector(".frame__repeat--js");
 const frameAbout = document.querySelector(".frame__about--js");
 
 const frameSq1st = document.querySelector(".sqFirst--js");
-const frameSi1st = document.querySelector('.siFirst--js');
-const framePu1st = document.querySelector('.puFirst--js');
+const frameSi1st = document.querySelector(".siFirst--js");
+const framePu1st = document.querySelector(".puFirst--js");
 const frameMore = document.querySelectorAll(".more--js");
 const framePartDone = document.querySelector(".part_done--js");
 //BUTTONS
@@ -51,6 +51,9 @@ const deleteRecords = document.querySelectorAll(".deleteRecord--js");
 const about = document.querySelector(".about--js");
 //main loop part
 const goOn = document.querySelectorAll(".go_on--js");
+const sqCount = document.querySelectorAll(".sq_count--js");
+const puCount = document.querySelectorAll(".pu_count--js");
+const siCount = document.querySelectorAll(".si_count--js");
 
 //ACTIONS ON BUTTONS (most of them)
 // 1 level
@@ -395,7 +398,7 @@ function action() {
 		frameSquats.classList.add("hide");
 		frameAction.classList.add("hide");
 		frameDone.classList.remove("hide");
-		console.log('done')
+		console.log("done");
 		allFlag = true;
 	}
 }
@@ -415,29 +418,34 @@ function squatsArc() {
 	if (stage === 0) {
 		frameSq1st.classList.remove("hide");
 		stage++;
-
+		blankCount();
 		goOn.forEach((input) =>
 			input.addEventListener("click", () => {
 				if (stage !== 0 && stage < resultLevel) {
+					blankCount();
 					frameSq1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.remove("hide"));
-
 					let localSquats = localStorage.getItem("daily squats");
 					dailySquats = JSON.parse(localSquats);
 					dailySquats += 10;
 					localStorage.setItem("daily squats", JSON.stringify(dailySquats));
 					stage++;
-					console.log(stage);
+
+					sqCount.forEach((input) => {
+						input.innerHTML += `you did ${(stage - 1) * 10}/${
+							resultLevel * 10
+						} squats`;
+					});
 				} else if (stage == resultLevel) {
 					let localSquats = localStorage.getItem("daily squats");
 					dailySquats = JSON.parse(localSquats);
 					dailySquats += 10;
 					localStorage.setItem("daily squats", JSON.stringify(dailySquats));
-
 					frameSq1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
+					frameSquats.classList.add("hide");
 					framePartDone.classList.remove("hide");
-					console.log("else");
+
 					stage = 0;
 				}
 			})
@@ -459,10 +467,11 @@ function pushupsArc() {
 	if (stage === 0) {
 		framePu1st.classList.remove("hide");
 		stage++;
-
+		blankCount();
 		goOn.forEach((input) =>
 			input.addEventListener("click", () => {
 				if (stage !== 0 && stage < resultLevel) {
+					blankCount();
 					framePu1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.remove("hide"));
 
@@ -471,13 +480,17 @@ function pushupsArc() {
 					dailyPushups += 10;
 					localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
 					stage++;
-					console.log(stage);
+					puCount.forEach((input) => {
+						input.innerHTML += `you did ${(stage - 1) * 10}/${
+							resultLevel * 10
+						} push ups`;
+					});
 				} else if (stage == resultLevel) {
 					let localPushups = localStorage.getItem("daily pushups");
 					dailyPushups = JSON.parse(localPushups);
 					dailyPushups += 10;
 					localStorage.setItem("daily pushups", JSON.stringify(dailyPushups));
-
+					framePushups.classList.add("hide");
 					framePu1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
 					framePartDone.classList.remove("hide");
@@ -503,10 +516,11 @@ function situpsArc() {
 	if (stage === 0) {
 		frameSi1st.classList.remove("hide");
 		stage++;
-
+		blankCount();
 		goOn.forEach((input) =>
 			input.addEventListener("click", () => {
 				if (stage !== 0 && stage < resultLevel) {
+					blankCount();
 					frameSi1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.remove("hide"));
 
@@ -515,13 +529,17 @@ function situpsArc() {
 					dailySitups += 10;
 					localStorage.setItem("daily situps", JSON.stringify(dailySitups));
 					stage++;
-					console.log(stage);
+					siCount.forEach((input) => {
+						input.innerHTML += `you did ${(stage - 1) * 10}/${
+							resultLevel * 10
+						} sit ups`;
+					});
 				} else if (stage == resultLevel) {
 					let localSitups = localStorage.getItem("daily situps");
 					dailySitups = JSON.parse(localSitups);
 					dailySitups += 10;
 					localStorage.setItem("daily situps", JSON.stringify(dailySitups));
-
+					frameSitups.classList.add("hide");
 					frameSi1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
 					framePartDone.classList.remove("hide");
@@ -533,7 +551,20 @@ function situpsArc() {
 	}
 }
 
-//flags
+// function to prevent stacking inner html dom elements
+function blankCount() {
+	sqCount.forEach((input) => {
+		input.innerHTML = "";
+	});
+	puCount.forEach((input) => {
+		input.innerHTML = "";
+	});
+	siCount.forEach((input) => {
+		input.innerHTML = "";
+	});
+}
+
+//flags (super useful)
 
 let squatsFlag = false;
 let situpsFlag = false;
@@ -661,4 +692,3 @@ const quoteDisplay = document.querySelector(".quote--js");
 quoteDisplay.innerHTML = quotes[randomQuote];
 
 //
-

@@ -121,6 +121,10 @@ main {
 			align-items: center;
 		}
 	}
+	&__counter {
+		position: absolute;
+		top: 35%;
+	}
 }
 
 .subframe2 {
