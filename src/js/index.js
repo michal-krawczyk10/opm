@@ -661,3 +661,4 @@ const quoteDisplay = document.querySelector(".quote--js");
 quoteDisplay.innerHTML = quotes[randomQuote];
 
 //
+
