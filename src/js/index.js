@@ -29,6 +29,8 @@ const frameSi1st = document.querySelector(".siFirst--js");
 const framePu1st = document.querySelector(".puFirst--js");
 const frameMore = document.querySelectorAll(".more--js");
 const framePartDone = document.querySelector(".part_done--js");
+const header = document.querySelector('.header--js');
+
 //BUTTONS
 //querySelectors
 //level 1
@@ -125,6 +127,7 @@ function runHome() {
 	frameRepeat.classList.add("hide");
 	frameAbout.classList.add("hide");
 	frameFirst.classList.remove("hide");
+	header.classList.remove('hide');
 	removeExerciseDisplay();
 }
 
@@ -398,6 +401,7 @@ function action() {
 		framePushups.classList.add("hide");
 		frameSquats.classList.add("hide");
 		frameAction.classList.add("hide");
+		header.classList.add('hide');
 		frameDone.classList.remove("hide");
 		const entryLevel = localStorage.getItem("level");
 		setResult.innerHTML = `<p>this time you did:</p><p>squats - ${entryLevel * 10}</p><p>push ups - ${entryLevel * 10}</p><p>sit ups - ${entryLevel * 10}`;
@@ -494,7 +498,6 @@ function pushupsArc() {
 					framePu1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
 					framePartDone.classList.remove("hide");
-					console.log("else");
 					stage = 0;
 				}
 			})
@@ -543,7 +546,6 @@ function situpsArc() {
 					frameSi1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
 					framePartDone.classList.remove("hide");
-					console.log("else");
 					stage = 0;
 				}
 			})

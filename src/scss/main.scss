@@ -81,7 +81,13 @@ main {
 		margin: 16px auto;
 		font-size: 14px;
 	}
+	&__done {
+		height: 100vh;
+		justify-content: center;
+		top: 0;
+	}
 }
+
 .subframe {
 	width: 100%;
 	height: 100%;
@@ -125,34 +131,8 @@ main {
 	position: fixed;
 }
 
-.quote {
-	font-family: $paprika;
-	background-image: url(https://github.com/michal-krawczyk10/opm/blob/master/src/assets/img/saitamaQuotepng.png?raw=true);
-	background-color: transparent;
-	background-size: cover;
-	background-repeat: no-repeat;
-	text-align: center;
-	padding: 0 1rem;
-	min-height: 203px;
-	min-width: 300px;
-	position: relative;
-	&__text_box {
-		position: absolute;
-		top: 8%;
-		right: 7%;
-		width: 40%;
-		height: 80%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	&__text {
-		font-size: 0.8rem;
-		color: $main;
-	}
-}
 .button {
-	width: 240px;
+	width: 168px;
 	padding: 12px 16px;
 	border-radius: 8px;
 	border: 4px solid $stroke;
@@ -186,8 +166,10 @@ main {
 		box-shadow: 0px 0px 12px 12px rgba(252, 231, 98, 1);
 	}
 	&__secondary {
-		width: 120px;
-		height: 72px;
+		background-color: $pink;
+		color: $strike;
+		font-size: 1.2rem;
+		border: none;
 	}
 }
 .arrow {
@@ -199,12 +181,37 @@ main {
 .muscles {
 	width: 80%;
 	max-width: 300px;
-	max-height: 120px;
-	}
-
-.show {
-	visibility: visible;
+	text-align: center;
+	font-size: 2rem;
 }
+
 .hide {
 	visibility: hidden;
+}
+
+.quote {
+	font-family: $paprika;
+	background-image: url(https://github.com/michal-krawczyk10/opm/blob/master/src/assets/img/saitamaQuotepng.png?raw=true);
+	background-color: transparent;
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
+	padding: 0 1rem;
+	min-height: 203px;
+	min-width: 300px;
+	position: relative;
+	&__text_box {
+		position: absolute;
+		top: 8%;
+		right: 7%;
+		width: 40%;
+		height: 80%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__text {
+		font-size: 0.8rem;
+		color: $main;
+	}
 }

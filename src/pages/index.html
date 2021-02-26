@@ -162,13 +162,13 @@
 	</head>
 	<body>
 		<main>
-			<header class="header">
+			<header class="header header--js">
 				<h1>One Punch Man<br />workout</h1>
 			</header>
 			<section class="container">
 				<!--level 0 -->
 				<div class="frame frame__first frame__first--js">
-					<button class="button button__secondary start--js">start</button>
+					<button class="button button__secondary start--js">START</button>
 
 					<button class="button settings--js">settings</button>
 					<button class="button about--js">about</button>
@@ -180,7 +180,7 @@
 				</div>
 				<!--level 1 -->
 				<div class="frame frame__workout frame__workout--js hide">
-					<button class="button standard--js">workout</button>
+					<button class="button button__secondary standard--js">workout</button>
 					<button class="button history--js">check you path so far</button>
 					<button class="button button__back home--js">
 						<svg
@@ -437,8 +437,8 @@
 				</div>
 				<!--level 4-->
 				<div class="frame frame__done frame__done--js hide">
-					<p>well done!</p>
 					<div class="muscles">
+						<p>WELL DONE!</p>
 						<svg
 							fill="none"
 							viewBox="0 0 180 116"
@@ -451,7 +451,12 @@
 						</svg>
 					</div>
 					<p class="done-cnt--js"></p>
-					<button class="button home--js">hell yeah</button>
+					<button
+						id="done"
+						class="button button__secondary button__done home--js"
+					>
+						OH YEAH!
+					</button>
 				</div>
 				<div class="frame frame__about frame__about--js hide">
 					<p>here is about section</p>
