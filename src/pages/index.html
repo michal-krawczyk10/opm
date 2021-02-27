@@ -180,7 +180,7 @@
 				</div>
 				<!--level 1 -->
 				<div class="frame frame__workout frame__workout--js hide">
-					<button class="button button__secondary standard--js">workout</button>
+					<button class="button button__secondary standard--js">WORKOUT</button>
 					<button class="button history--js">check you path so far</button>
 					<button class="button button__back home--js">
 						<svg
@@ -200,11 +200,13 @@
 					</button>
 				</div>
 				<div class="frame frame__history frame__history--js hide">
-					<article>
-						<h3>Your progress so far</h3>
-						<p class="history__display--js"></p>
+					<article class="history">
+						<h2 class="history__header">your progress so far</h2>
+						<h3 class="history__header">today</h3>
+						<p class="history__today"></p>
+						<div class="history__buttons"><button class="button button__early--js">earlier</button
+						><button class="button">achievements</button></div>
 					</article>
-					<!-- <button class="button">achievement</button> -->
 					<button class="button button__back home--js deleteRecord--js">
 						<svg
 							class="arrow"
@@ -222,6 +224,14 @@
 						back
 					</button>
 				</div>
+
+				<div class="frame frame__early_hist hide">
+					<p class="history__display--js"></p>
+					<button
+						class="button button__back home--js deleteRecord--js"
+					></button>
+				</div>
+
 				<div class="frame frame__settings frame__settings--js hide">
 					<button class="button">delate history</button>
 					<button class="button">4</button>
@@ -245,10 +255,11 @@
 				<!--level 2-->
 				<div class="frame frame__standard frame__standard--js hide">
 					<div class="exercise_container--js">
+						<p>your set of exercises</p>
 						<p class="exercise_set--js"></p>
 					</div>
+					<button class="button modify--js">modify it</button>
 					<button class="button button__secondary go--js">GO!</button>
-					<button class="button modify--js">modify your set</button>
 					<button class="button button__back to_workout--js">
 						<svg
 							class="arrow"
@@ -267,10 +278,11 @@
 					</button>
 				</div>
 				<div class="frame frame__modify frame__modify--js hide">
-					<p>Your current level is: <span class="level_display--js"></span></p>
+					<p>you're on level: <span class="level_display--js"></span></p>
 					<button class="button level--js">change your level</button>
-					<p>current exercise set</p>
+
 					<div class="exercise_container--js">
+						<p>current exercise set</p>
 						<p class="exercise_set--js"></p>
 					</div>
 					<!-- <button class="button">change them</button> -->
@@ -376,14 +388,14 @@
 				</div>
 				<div class="frame part_done--js hide">
 					<p class="frame__part">
-						ara ara!<br />take a small rest and continue to another exercise
+						ara ara<br />take a small rest and continue to another exercise
 					</p>
 					<button class="button next--js">next</button>
 				</div>
-				<div class="frame frame__repeat--js hide">
-					<p>wait, you've already done set of exercises</p>
-					<p>wanna do another?</p>
-					<button class="button repeat--js">sure I do</button
+				<div class="frame frame__repeat frame__repeat--js hide">
+					<p>wait, you've already done some exercises</p>
+					<p>wanna do more?</p>
+					<button class="button button__secondary repeat--js">sure I do</button
 					><button class="button home--js">nah, I'm fine for now</button>
 				</div>
 				<div class="frame frame__level frame__level--js hide">
@@ -451,10 +463,7 @@
 						</svg>
 					</div>
 					<p class="done-cnt--js"></p>
-					<button
-						id="done"
-						class="button button__secondary button__done home--js"
-					>
+					<button class="button button__secondary button__done home--js">
 						OH YEAH!
 					</button>
 				</div>
