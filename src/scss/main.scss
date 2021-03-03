@@ -41,19 +41,10 @@ main {
 }
 
 .header {
-	height: 5rem;
 	padding: 1rem 0;
-	text-align: left;
-	display: flex;
-	justify-content: left;
-	& h1 {
-		font-size: 1rem;
-		font-weight: 400;
-		margin-left: 20%;
-	}
 }
 .frame {
-	height: calc(100vh - (5rem + 92px));
+	height: calc(100vh - 120px);
 	width: 100%;
 	padding: 0 1rem;
 	position: absolute;
@@ -279,4 +270,11 @@ main {
 .icons {
 	width: 80px;
 	height: 80px;
+}
+
+.logo {
+	width: 50%;
+	max-width: 180px;
+	margin: 10px auto 0 auto;
+
 }
