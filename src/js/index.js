@@ -5,19 +5,16 @@ import { registerSW } from "./pwa.js";
 registerSW();
 
 //FRAMES
-//level 1
 const frameFirst = document.querySelector(".frame__first--js");
 const frameWorkout = document.querySelector(".frame__workout--js");
 const frameHistory = document.querySelector(".frame__history--js");
 const frameSettings = document.querySelector(".frame__settings--js");
-//level 2
 const frameStandard = document.querySelector(".frame__standard--js");
 const frameModify = document.querySelector(".frame__modify--js");
 const frameLevel = document.querySelector(".frame__level--js");
-//level 3
 const frameAction = document.querySelector(".frame__action--js");
 const frameDone = document.querySelector(".frame__done--js");
-//level 4 - action frames
+// action frames
 const frameSquats = document.querySelector(".squats_action--js");
 const frameSitups = document.querySelector(".situps_action--js");
 const framePushups = document.querySelector(".pushups_action--js");
@@ -30,27 +27,28 @@ const framePu1st = document.querySelector(".puFirst--js");
 const frameMore = document.querySelectorAll(".more--js");
 const framePartDone = document.querySelector(".part_done--js");
 const header = document.querySelector(".header--js");
+const frameBefore = document.querySelector(".frame__before--js");
 
 //BUTTONS
 //querySelectors
-//level 1
+
 const start = document.querySelector(".start--js");
 const history = document.querySelector(".history--js");
 const settings = document.querySelector(".settings--js");
-//level 2
 const standard = document.querySelector(".standard--js");
 const level = document.querySelector(".level--js");
 const modify = document.querySelector(".modify--js");
 const backToWorkout = document.querySelectorAll(".to_workout--js");
-//level 3
 const go = document.querySelectorAll(".go--js");
-//level 4
 const done = document.querySelectorAll(".done--js");
 const home = document.querySelectorAll(".home--js");
 const next = document.querySelectorAll(".next--js");
 const repeat = document.querySelectorAll(".repeat--js");
 const deleteRecords = document.querySelectorAll(".deleteRecord--js");
 const about = document.querySelector(".about--js");
+const before = document.querySelector(".button__before--js");
+const backToToday = document.querySelector(".backToToday--js");
+
 //main loop part
 const goOn = document.querySelectorAll(".go_on--js");
 const sqCount = document.querySelectorAll(".sq_count--js");
@@ -59,7 +57,7 @@ const siCount = document.querySelectorAll(".si_count--js");
 const setResult = document.querySelector(".done-cnt--js");
 
 //ACTIONS ON BUTTONS (most of them)
-// 1 level
+
 start.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameWorkout.classList.remove("hide");
@@ -71,26 +69,28 @@ history.addEventListener("click", () => {
 	header.classList.add("hide");
 	frameHistory.classList.remove("hide");
 	today();
+});
+
+before.addEventListener("click", () => {
+	frameHistory.classList.add("hide");
+	frameBefore.classList.remove("hide");
 	records();
 });
+backToToday.addEventListener("click", () => {
+	frameBefore.classList.add("hide");
+	frameHistory.classList.remove("hide");
+});
+
 settings.addEventListener("click", () => {
 	frameFirst.classList.add("hide");
 	frameSettings.classList.remove("hide");
 });
 
-// 2a level
 standard.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
 	frameStandard.classList.remove("hide");
 });
-// modify.addEventListener("click", () => {
-// 	frameStandard.classList.add("hide");
-// 	frameWorkout.classList.add("hide");
-// 	header.classList.add("hide");
-// 	frameModify.classList.remove("hide");
-// });
 
-//3 level
 go.forEach((input) => input.addEventListener("click", runGo));
 
 go.forEach((input) => input.addEventListener("click", removeExerciseDisplay)); // to prevent innerhtml stacking later on
@@ -115,7 +115,6 @@ function runGo() {
 	action();
 }
 
-//4 level
 done.forEach((input) =>
 	input.addEventListener("click", () => {
 		frameAction.classList.add("hide");
@@ -664,7 +663,7 @@ function records() {
 	localHistory = localStorage.getItem("history");
 	resultHistory = JSON.parse(localHistory);
 	resultHistory.forEach((arrayItem) => {
-		historyDisplay.innerHTML += `<p class="records--js">${arrayItem.currentDay}: <span>sit ups: ${arrayItem.dailySitups}; </span><span>squats: ${arrayItem.dailySquats}; </span><span>push ups: ${arrayItem.dailyPushups}</span></p>`;
+		historyDisplay.innerHTML += `<p class="container__before--item records--js">${arrayItem.currentDay} <span><p>sit ups: ${arrayItem.dailySitups}; </p><p>squats: ${arrayItem.dailySquats}; </p><p>push ups: ${arrayItem.dailyPushups}</p></span></p>`;
 	});
 }
 
@@ -713,4 +712,4 @@ const quoteDisplay = document.querySelector(".quote--js");
 
 quoteDisplay.innerHTML = quotes[randomQuote];
 
-//
+//before history frame

@@ -65,8 +65,8 @@ main {
 		top: 0;
 		height: 100%;
 		& > h2 {
-		margin-bottom: 0;
-}
+			margin-bottom: 0;
+		}
 	}
 	&__history {
 		height: calc(100vh - 1rem);
@@ -116,6 +116,10 @@ main {
 		top: 0;
 	}
 	&__action {
+		height: 100vh;
+		top: 0;
+	}
+	&__before {
 		height: 100vh;
 		top: 0;
 	}
@@ -306,5 +310,17 @@ main {
 	align-items: center;
 	&__history {
 		justify-content: space-around;
+	}
+	&__before {
+		display: inline-block;
+		overflow: scroll;
+		top: 48px;
+		height: calc(100% - 128px);
+		& > div {
+			margin: 16px;
+		}
+		&--header {
+			text-align: center;
+		}
 	}
 }
