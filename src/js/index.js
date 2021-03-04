@@ -405,18 +405,6 @@ function action() {
 		situpsArc();
 		situpsFlag = true;
 		exerciseHistory();
-	} else {
-		frameSitups.classList.add("hide");
-		framePushups.classList.add("hide");
-		frameSquats.classList.add("hide");
-		frameAction.classList.add("hide");
-		header.classList.add("hide");
-		frameDone.classList.remove("hide");
-		const entryLevel = localStorage.getItem("level");
-		setResult.innerHTML = `<p>this time you did:</p><p>squats - ${
-			entryLevel * 10
-		}</p><p>push ups - ${entryLevel * 10}</p><p>sit ups - ${entryLevel * 10}`;
-		allFlag = true;
 	}
 }
 // main loop arcs
@@ -553,11 +541,20 @@ function situpsArc() {
 					dailySitups = JSON.parse(localSitups);
 					dailySitups += 10;
 					localStorage.setItem("daily situps", JSON.stringify(dailySitups));
-					frameSitups.classList.add("hide");
 					frameSi1st.classList.add("hide");
 					frameMore.forEach((input) => input.classList.add("hide"));
-					framePartDone.classList.remove("hide");
 					stage = 0;
+
+					frameSitups.classList.add("hide");
+					frameAction.classList.add("hide");
+					frameDone.classList.remove("hide");
+					const entryLevel = localStorage.getItem("level");
+					setResult.innerHTML = `<p>this time you did:</p><p>squats - ${
+						entryLevel * 10
+					}</p><p>push ups - ${entryLevel * 10}</p><p>sit ups - ${
+						entryLevel * 10
+					}`;
+					allFlag = true;
 				}
 			})
 		);
