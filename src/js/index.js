@@ -83,12 +83,12 @@ standard.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
 	frameStandard.classList.remove("hide");
 });
-modify.addEventListener("click", () => {
-	frameStandard.classList.add("hide");
-	frameWorkout.classList.add("hide");
-	header.classList.add("hide");
-	frameModify.classList.remove("hide");
-});
+// modify.addEventListener("click", () => {
+// 	frameStandard.classList.add("hide");
+// 	frameWorkout.classList.add("hide");
+// 	header.classList.add("hide");
+// 	frameModify.classList.remove("hide");
+// });
 
 //3 level
 go.forEach((input) => input.addEventListener("click", runGo));
@@ -101,7 +101,9 @@ backToWorkout.forEach((input) =>
 	input.addEventListener("click", () => {
 		frameStandard.classList.add("hide");
 		frameModify.classList.add("hide");
+		frameHistory.classList.add("hide");
 		frameWorkout.classList.remove("hide");
+		header.classList.remove("hide");
 	})
 );
 
@@ -193,6 +195,7 @@ const exerciseSetDisplay = document.querySelectorAll(".exercise_set--js");
 
 level.addEventListener("click", () => {
 	frameModify.classList.add("hide");
+	frameStandard.classList.add("hide");
 	header.classList.add("hide");
 	frameLevel.classList.remove("hide");
 });
@@ -202,7 +205,8 @@ const backToModify = document.querySelectorAll(".to_modify--js");
 backToModify.forEach((input) => {
 	input.addEventListener("click", () => {
 		frameLevel.classList.add("hide");
-		frameModify.classList.remove("hide");
+		header.classList.remove("hide");
+		frameStandard.classList.remove("hide");
 	});
 });
 

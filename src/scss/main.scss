@@ -64,6 +64,9 @@ main {
 	&__level {
 		top: 0;
 		height: 100%;
+		& > h2 {
+		margin-bottom: 0;
+}
 	}
 	&__history {
 		height: calc(100vh - 1rem);
@@ -80,7 +83,7 @@ main {
 	&__text {
 		padding: 16px;
 		max-width: 320px;
-		margin: 16px 0 0 0;
+		margin: 0;
 		text-align: center;
 	}
 	&__done {
