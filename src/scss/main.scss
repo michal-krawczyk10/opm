@@ -66,9 +66,11 @@ main {
 		display: inline-block;
 		text-align: center;
 	}
-	// &__history {
-	// 	overflow: scroll;
-	// }
+	&__history {
+		height: calc(100vh - 1rem);
+		position: absolute;
+		top: 1rem;
+	}
 	&__standard {
 		height: 100vh;
 		position: absolute;
@@ -100,24 +102,27 @@ main {
 	&__repeat {
 		text-align: center;
 	}
+	&__action {
+		height: 100vh;
+		top: 0;
+
+	}
 }
 
 .subframe {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	// border: 1px solid yellow;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	// border: 1px pink dotted;
 	&__img {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 40%;
+		height: 45%;
 		width: 60%;
 		& > svg {
 			max-height: 150px;
@@ -125,7 +130,7 @@ main {
 		}
 	}
 	&__box {
-		height: 60%;
+		height: 55%;
 		width: 100%;
 		& > div {
 			position: absolute;
@@ -268,13 +273,26 @@ main {
 }
 
 .icons {
-	width: 80px;
-	height: 80px;
+	width: 64px;
+	height: 64px;
 }
 
 .logo {
 	width: 50%;
 	max-width: 180px;
 	margin: 10px auto 0 auto;
+}
 
+.container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: calc(100% - 80px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	&__history {
+		justify-content: space-around;
+	}
 }

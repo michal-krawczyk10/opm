@@ -68,6 +68,7 @@ start.addEventListener("click", () => {
 });
 history.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
+	header.classList.add("hide");
 	frameHistory.classList.remove("hide");
 	today();
 	records();
@@ -106,6 +107,7 @@ backToWorkout.forEach((input) =>
 function runGo() {
 	frameStandard.classList.add("hide");
 	frameModify.classList.add("hide");
+	header.classList.add("hide");
 	frameAction.classList.remove("hide");
 	action();
 }
