@@ -59,12 +59,11 @@ main {
 		align-items: center;
 		flex-wrap: wrap;
 		max-width: 300px;
-		margin: auto;
 		padding-bottom: 16px;
 	}
 	&__level {
-		display: inline-block;
-		text-align: center;
+		top: 0;
+		height: 100%;
 	}
 	&__history {
 		height: calc(100vh - 1rem);
@@ -79,19 +78,28 @@ main {
 		text-align: center;
 	}
 	&__text {
-		padding: 24px;
+		padding: 16px;
 		max-width: 320px;
-		margin: 16px auto;
+		margin: 16px 0 0 0;
+		text-align: center;
 	}
 	&__done {
 		height: 100vh;
 		justify-content: center;
 		top: 0;
+		& > p {
+		margin: 0;		
+}
 	}
 	&__part {
-		text-align: center;
-		max-width: 260px;
-		font-size: 1.4rem;
+		height: 100vh;
+		top: 0;
+		width: 100%;
+		& > p {
+			text-align: center;
+			max-width: 260px;
+			font-size: 1.4rem;
+		}
 	}
 	&__modify {
 		height: 100vh;
@@ -105,7 +113,6 @@ main {
 	&__action {
 		height: 100vh;
 		top: 0;
-
 	}
 }
 
@@ -203,7 +210,7 @@ main {
 }
 
 .muscles {
-	width: 80%;
+	width: 70%;
 	max-width: 300px;
 	text-align: center;
 	font-size: 2rem;

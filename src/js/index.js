@@ -86,6 +86,7 @@ standard.addEventListener("click", () => {
 modify.addEventListener("click", () => {
 	frameStandard.classList.add("hide");
 	frameWorkout.classList.add("hide");
+	header.classList.add("hide");
 	frameModify.classList.remove("hide");
 });
 
@@ -192,6 +193,7 @@ const exerciseSetDisplay = document.querySelectorAll(".exercise_set--js");
 
 level.addEventListener("click", () => {
 	frameModify.classList.add("hide");
+	header.classList.add("hide");
 	frameLevel.classList.remove("hide");
 });
 

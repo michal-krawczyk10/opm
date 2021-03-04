@@ -240,10 +240,13 @@
 				</div>
 				<!--level 1 -->
 				<div class="frame frame__workout frame__workout--js hide">
-					<div class="container"><button class="button button__secondary standard--js">WORKOUT</button>
-					<button class="button history--js">
-						your previous exercises
-					</button><button class="button">achievements</button></div>
+					<div class="container">
+						<button class="button button__secondary standard--js">
+							WORKOUT
+						</button>
+						<button class="button history--js">your previous exercises</button
+						><button class="button">achievements</button>
+					</div>
 					<button class="button button__back home--js">
 						<svg
 							class="arrow"
@@ -311,8 +314,7 @@
 							</p>
 						</div>
 						<div class="history__buttons">
-							<button class="button button__early--js">earlier</button
-							>
+							<button class="button button__early--js">earlier</button>
 						</div>
 					</article>
 					<button class="button button__back home--js deleteRecord--js">
@@ -363,7 +365,7 @@
 				<!--level 2-->
 				<div class="frame frame__standard frame__standard--js hide">
 					<div class="exercise_container--js">
-						<p>your set of exercises</p>
+						<h2>your set of exercises</h2>
 						<p class="exercise_set--js"></p>
 					</div>
 					<button class="button modify--js">modify it</button>
@@ -386,15 +388,17 @@
 					</button>
 				</div>
 				<div class="frame frame__modify frame__modify--js hide">
-					<p>you're on level: <span class="level_display--js"></span></p>
-					<button class="button level--js">change your level</button>
+					<article class="container">
+						<h2>you're on level: <span class="level_display--js"></span></h2>
+						<button class="button level--js">change your level</button>
 
-					<div class="exercise_container--js">
-						<p>current exercise set</p>
-						<p class="exercise_set--js"></p>
-					</div>
-					<!-- <button class="button">change them</button> -->
-					<button class="button button__secondary go--js">GO</button>
+						<div class="exercise_container--js">
+							<p>current exercise set</p>
+							<p class="exercise_set--js"></p>
+						</div>
+						<!-- <button class="button">change them</button> -->
+						<button class="button button__secondary go--js">GO</button>
+					</article>
 					<button class="button button__back to_workout--js">
 						<svg
 							class="arrow"
@@ -494,10 +498,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="frame part_done--js hide">
-					<p class="frame__part">
-						ara ara<br />take a small rest and continue to another exercise
-					</p>
+				<div class="frame frame__part part_done--js hide">
+					<p>nice<br />take a small rest and continue to another exercise</p>
 					<button class="button next--js">next</button>
 				</div>
 				<div class="frame frame__repeat frame__repeat--js hide">
