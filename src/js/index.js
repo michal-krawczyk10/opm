@@ -83,10 +83,10 @@ backToToday.addEventListener("click", () => {
 	frameHistory.classList.remove("hide");
 });
 
-settings.addEventListener("click", () => {
-	frameFirst.classList.add("hide");
-	frameSettings.classList.remove("hide");
-});
+// settings.addEventListener("click", () => {
+// 	frameFirst.classList.add("hide");
+// 	frameSettings.classList.remove("hide");
+// });
 
 standard.addEventListener("click", () => {
 	frameWorkout.classList.add("hide");
@@ -736,12 +736,12 @@ quoteDisplay.innerHTML = quotes[randomQuote];
 
 //achievmenst
 
-let localWorkouts = localStorage.getItem("workouts done");
-let workouts = 0;
-if (localWorkouts) {
-	workouts = JSON.parse(localWorkouts);
-	console.log("if");
-} else {
-	localStorage.setItem("workouts done", JSON.stringify(0));
-	workouts = localWorkouts;
-}
+// let localWorkouts = localStorage.getItem("workouts done");
+// let workouts = 0;
+// if (localWorkouts) {
+// 	workouts = JSON.parse(localWorkouts);
+// 	console.log("if");
+// } else {
+// 	localStorage.setItem("workouts done", JSON.stringify(0));
+// 	workouts = localWorkouts;
+// }

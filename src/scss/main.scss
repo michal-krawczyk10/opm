@@ -312,6 +312,15 @@ main {
 		justify-content: space-around;
 		height: calc(100% - 80px);
 	}
+	&__about {
+		width: 80%;
+		text-align: justify;
+		overflow: auto;
+		display: inline-block;
+		&--link {
+			color: $stroke;
+		}
+	}
 	&__before {
 		display: flex;
 		flex-direction: column;
