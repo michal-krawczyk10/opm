@@ -2,8 +2,8 @@
 
 # OPM TRAIL 
 
-Simple toolkit for your static websites development.
+I made this simple app for myself, to track my daily exercises and to practise my coding skills.
 
-## How to use it?
+It is also a fan art, to honor Saitama and his creators.
 
-Click on `Use this template` button to generate a new repository based on this starter kit. After that clone it to your computer, go to the project directory in console and type `npm install`.
+Feel free to use it. :)
