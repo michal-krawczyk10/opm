@@ -662,8 +662,23 @@ const historyDisplay = document.querySelector(".history__display--js");
 function records() {
 	localHistory = localStorage.getItem("history");
 	resultHistory = JSON.parse(localHistory);
+	resultHistory.shift();
 	resultHistory.forEach((arrayItem) => {
-		historyDisplay.innerHTML += `<p class="container__before--item records--js">${arrayItem.currentDay} <span><p>sit ups: ${arrayItem.dailySitups}; </p><p>squats: ${arrayItem.dailySquats}; </p><p>push ups: ${arrayItem.dailyPushups}</p></span></p>`;
+		historyDisplay.innerHTML += `<div class="container__before--item records--js">
+				<p>${arrayItem.currentDay}</p>
+					<div class="container__before--line">
+						<span>sit ups</span>
+						<span class="right">${arrayItem.dailySitups}</span>
+					</div>
+					<div class="container__before--line">
+						<span>squats</span>
+						<span class="right">${arrayItem.dailySquats}</span>
+					</div>
+					<div class="container__before--line">
+						<span>push ups</span>
+						<span class="right">${arrayItem.dailyPushups}</span>
+					</div>
+			</div>`;
 	});
 }
 

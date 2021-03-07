@@ -310,10 +310,13 @@ main {
 	align-items: center;
 	&__history {
 		justify-content: space-around;
+		height: calc(100% - 80px);
 	}
 	&__before {
-		display: inline-block;
-		overflow: scroll;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
 		top: 48px;
 		height: calc(100% - 128px);
 		& > div {
@@ -321,6 +324,30 @@ main {
 		}
 		&--header {
 			text-align: center;
+			font-size: 1.2rem;
+		}
+		&--art {
+			height: 80%;
+			width: 80%;
+			max-width: 300px;
+			overflow: auto;
+		}
+		&--item {
+			width: 100%;
+			padding: 1rem 0 1rem 30%;
+			border-bottom: 1px solid $stroke;
+			& > p {
+				margin-top: 0;
+			}
+		}
+		&--line {
+			width: 120px;
 		}
 	}
+}
+.center {
+	text-align: center;
+}
+.right {
+	float: right;
 }
