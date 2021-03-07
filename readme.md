@@ -1,4 +1,4 @@
-![cover](url to png)
+![cover](https://raw.githubusercontent.com/michal-krawczyk10/opm/4d5b935ac75fd2fb11d40680b6ecf398fc8deedf/src/assets/img/logo3.svg)
 
 # OPM TRAIL 
 
