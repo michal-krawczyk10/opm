@@ -50,6 +50,7 @@ const about = document.querySelector(".about--js");
 const before = document.querySelector(".button__before--js");
 const backToToday = document.querySelector(".backToToday--js");
 const achiv = document.querySelector(".achiv--js");
+const reload = document.querySelector(".reload--js");
 
 //main loop part
 const goOn = document.querySelectorAll(".go_on--js");
@@ -745,3 +746,10 @@ quoteDisplay.innerHTML = quotes[randomQuote];
 // 	localStorage.setItem("workouts done", JSON.stringify(0));
 // 	workouts = localWorkouts;
 // }
+
+//reload on click (temporarly, to make site updates easier)
+
+reload.addEventListener("click", () => {
+	location.reload();
+	console.log("s");
+});
