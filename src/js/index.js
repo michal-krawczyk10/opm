@@ -28,6 +28,7 @@ const frameMore = document.querySelectorAll(".more--js");
 const framePartDone = document.querySelector(".part_done--js");
 const header = document.querySelector(".header--js");
 const frameBefore = document.querySelector(".frame__before--js");
+const frameAchiv = document.querySelector(".frame__achiv--js");
 
 //BUTTONS
 //querySelectors
@@ -48,6 +49,7 @@ const deleteRecords = document.querySelectorAll(".deleteRecord--js");
 const about = document.querySelector(".about--js");
 const before = document.querySelector(".button__before--js");
 const backToToday = document.querySelector(".backToToday--js");
+const achiv = document.querySelector(".achiv--js");
 
 //main loop part
 const goOn = document.querySelectorAll(".go_on--js");
@@ -99,6 +101,7 @@ deleteRecords.forEach((input) => input.addEventListener("click", deleteRecord));
 
 backToWorkout.forEach((input) =>
 	input.addEventListener("click", () => {
+		frameAchiv.classList.add("hide");
 		frameStandard.classList.add("hide");
 		frameModify.classList.add("hide");
 		frameHistory.classList.add("hide");
@@ -160,6 +163,10 @@ about.addEventListener("click", () => {
 	frameAbout.classList.remove("hide");
 });
 
+achiv.addEventListener("click", () => {
+	frameWorkout.classList.add("hide");
+	frameAchiv.classList.remove("hide");
+});
 //END OF BUTTONS PART
 
 function updateExercises() {
@@ -727,4 +734,14 @@ const quoteDisplay = document.querySelector(".quote--js");
 
 quoteDisplay.innerHTML = quotes[randomQuote];
 
-//before history frame
+//achievmenst
+
+let localWorkouts = localStorage.getItem("workouts done");
+let workouts = 0;
+if (localWorkouts) {
+	workouts = JSON.parse(localWorkouts);
+	console.log("if");
+} else {
+	localStorage.setItem("workouts done", JSON.stringify(0));
+	workouts = localWorkouts;
+}
