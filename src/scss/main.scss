@@ -189,7 +189,12 @@ main {
 		text-align: right;
 		padding-right: 8px;
 		background: $stroke;
+		@media screen and (min-width: 1024px) {
+			bottom: 120px;
+			right: 200px;
+		}
 	}
+
 	&__main {
 		background: $stroke;
 		color: $main;
